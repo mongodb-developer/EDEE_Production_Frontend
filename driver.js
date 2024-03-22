@@ -88,7 +88,7 @@ class MongoClient {
 
     //This is weirdly critical as JSFiddle clears the session cookies each time
     //So anonymous users aren't retained we also want to be able to get back to our data
-    const realmApp = new Realm.App({ id: "mongodb-qdthj" });
+    const realmApp = new Realm.App({ id: __atlasappid  });
     const credential = Realm.Credentials.emailPassword(
       this.userName,
       this.passWord
@@ -98,8 +98,8 @@ class MongoClient {
       MongoClient._nServerCalls++;
       this.lastError = "Existing User Authenticated";
       // Measure server latency
-
-      this.user.functions.t({ username: this.userName, example: _exampleName }); // Ignore promise
+      const event = localStorage.getItem("organization") 
+      this.user.functions.t({ username: this.userName, example: _exampleName , event , site: __hostingsite}); // Ignore promise
       if (MongoClient._serverLatency == -1) {
         const startTime = Date.now();
         for(let x=0;x<3;x++){

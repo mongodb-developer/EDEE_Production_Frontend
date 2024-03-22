@@ -1,11 +1,8 @@
-Fix wildcard example.
-Create dev environment separate from prod
-Change hosting?? 
-   GH pages with a better domain
-Make a formal post to prod
+
+~~~Add org to telemetry~~~
+
 Create automated testing of examples.
-Change org to event and add to telemetry
-Build new session (schema?)
+
 Add transaction support
 Add vector examples
 Add multimedia for vectors
