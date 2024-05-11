@@ -37,7 +37,8 @@ async function onLoad() {
   outputFormatted.setOption("highlightActiveLine", false)
   outputFormatted.renderer.setShowGutter(false);
   outputFormatted.session.setMode("ace/mode/json");
-  outputFormatted.setReadOnly(true);
+  outputFormatted.session.setUseWrapMode(true);
+
   outputFormatted.setOptions({
     fontFamily: "Source Code Pro",
     fontSize: "12pt"

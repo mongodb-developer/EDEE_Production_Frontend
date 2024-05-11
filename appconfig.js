@@ -1,2 +1,2 @@
-__hostingsite = "jlpdev"
-__atlasappid = "mongodb-qdthj"
+__hostingsite = "johnslaptop"
+__atlasappid = "edee_development_johnp-wznndsc"

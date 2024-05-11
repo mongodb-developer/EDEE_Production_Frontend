@@ -1,0 +1,44 @@
+{
+  "vacationTypes": [
+    {
+      "title": "Beach Getaway",
+      "description": "A Beach Getaway is the perfect escape for those looking to unwind by the sea. Sink your toes into soft sands, swim in crystal-clear waters, and enjoy the rhythm of waves. Ideal for sunbathers, swimmers, and anyone needing a serene break from the daily grind."
+    },
+    {
+      "title": "Cultural Tour",
+      "description": "Explore the rich tapestry of history and art on a Cultural Tour. Visit museums, historical sites, and cultural landmarks. This vacation is perfect for history buffs and art lovers eager to immerse themselves in the traditions and heritage of new places."
+    },
+    {
+      "title": "Adventure Trip",
+      "description": "For thrill-seekers and nature enthusiasts, an Adventure Trip offers hiking, kayaking, and climbing in some of the world's most breathtaking landscapes. It’s a chance to challenge yourself physically and connect with nature on a deeper level."
+    },
+    {
+      "title": "City Break",
+      "description": "A City Break is ideal for those who thrive in urban environments. Discover the hustle and bustle of a new city, explore local cuisine, nightlife, and shopping. Perfect for a quick recharge and a taste of city life."
+    },
+    {
+      "title": "Wellness Retreat",
+      "description": "A Wellness Retreat focuses on self-care, offering activities like yoga, meditation, and spa treatments. Located in tranquil settings, it’s a sanctuary for rejuvenation of the mind, body, and soul."
+    },
+    {
+      "title": "Cruise Vacation",
+      "description": "Embark on a Cruise Vacation to explore multiple destinations while enjoying the luxury and entertainment aboard a cruise ship. Ideal for families and couples, it offers a blend of relaxation and adventure."
+    },
+    {
+      "title": "Ski vacation",
+      "description": "Hit the slopes with a Ski vacation, perfect for those who love winter sports. Whether you're a beginner or a seasoned pro, ski resorts offer a variety of runs and après-ski activities in snowy paradises."
+    },
+    {
+      "title": "Eco-Tourism",
+      "description": "Eco-Tourism promotes sustainable travel to natural areas, conserving the environment and improving the well-being of local people. It’s suited for travelers who want to make positive impacts on the places they visit."
+    },
+    {
+      "title": "Gastronomic Tour",
+      "description": "A Gastronomic Tour indulges your taste buds with local cuisines and culinary traditions. It’s a feast for food lovers eager to explore new flavors and learn about the gastronomy of different cultures."
+    },
+    {
+      "title": "Historical Reenactment vacation",
+      "description": "Step back in time with a Historical Reenactment vacation, where you participate in or watch reenactments of historical events. This vacation is perfect for history enthusiasts and anyone interested in learning through immersive experiences."
+    }
+  ]
+}
