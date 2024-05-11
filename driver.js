@@ -13,6 +13,13 @@
  * the server and will automatically manage failover if a server is unavailable.
  */
 class MongoClient {
+
+
+  async getRealmUser () {
+    if (!(await this.connect())) throw new Error(this.lastError);
+    return this.user;
+  }
+
   toJSON() {
     return { user: this.userName };
   }
@@ -81,6 +88,7 @@ class MongoClient {
    * @param {String} dbName
    * @returns a MongoDatabase Object representing a database you want to work with
    */
+
   getDatabase(dbName) {
     const db = new MongoDatabase(dbName, this);
     return db;
@@ -185,7 +193,7 @@ class MongoDatabase {
   /**
    *
    * @param {String} collNamne
-   * @returns a MongoCollection Object representing a MongoDB colleciton you want to work with
+   * @returns a MongoCollection Object representing a MongoDB collection you want to work with
    */
   getCollection(collName) {
     const coll = new MongoCollection(collName, this.dbName, this.mongoClient);
@@ -261,12 +269,14 @@ class MongoCollection {
     if (!(await this.mongoClient.connect()))
       throw new Error(this.mongoClient.lastError);
     MongoClient._nServerCalls++;
+ 
     const rval = await this.mongoClient.user.functions.createSearchIndex(
       this.dbName,
       this.collName,
       name,
       definition
     );
+
     if (rval.error) {
       throw new Error(rval.error);
     }
