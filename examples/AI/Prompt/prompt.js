@@ -10,7 +10,7 @@ async function post_Prompt(req, res) {
 
   var response = await aiService.promptToText(post.prompt)
   res.status(200);
-  res.send(response);
+  res.send(response);  
 }
 
 
