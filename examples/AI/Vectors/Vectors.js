@@ -2,7 +2,7 @@
 var aiService = null
 var mongoClient = null
 var vacationTypeCollection = null
-var fieldtoHoldVector = "embedding"
+var fieldtoHoldVector = "embedding" 
 
 // Vectors are an abstract numeric representation of the 'concept' of text or images
 // When we add a document we can compute a vector and save it with it then we
