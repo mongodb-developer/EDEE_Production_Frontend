@@ -30,7 +30,7 @@ void post_Booking(SimRequest request, SimResponse response) {
 
 // Read the Booking ID form the URL 
 void get_Booking(SimRequest request, SimResponse response) {
-  Bson query = Filters.empty(); // An empty query matches everything
+  var query = Filters.empty(); // An empty query matches everything
 
   // Get id from the URL and add it to the query
   if (request.query.get("id")) {

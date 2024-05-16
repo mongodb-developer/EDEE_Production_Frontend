@@ -20,7 +20,9 @@ async function post_PropertyViews(request, response) {
   var propertyId = request.params[3]; // from URL
   var sourceIp = request.sourceIp; // simulated value
 
-  var query = Filters.eq("_id", propertyId).put("nViews",Filters.lt(8)); // Record only first 8
+  //We can use append for a fluent API
+  var query = Filters.eq("_id", propertyId)
+                     .append("nViews",Filters.lt(8)); // Record only first 8
 
   var setDate = Updates.set("lastView", new Date)
   var incrementViews = Updates.inc("nViews",1);
