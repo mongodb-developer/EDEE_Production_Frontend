@@ -1,0 +1,17 @@
+This example shows how to run a MongoDB-enhanced version of SQL against
+MongoDB data. The enhanced syntax makes it easier for systems expecting
+flat output from SQL queries. Here, we're using the MongoDB "FLATTEN"
+operator to elevate nested fields to the top-level. There's also an 
+"UNWIND" operator to flatten array values - feel free to try that out
+for yourself.
+
+Atlas SQL lets you run read-only SQL queries against data stored in MongoDB
+collections. As the SQL commands are read-only, it would be more correct to
+use a GET method, but the UI is cleaner if we use the "POST Data" box to
+enter the SQL query string.
+
+In this workshop environment, you're only able to run SQL queries against
+the shared, "sample_..." collections.
+
+Note that the SQL query is run against a database, and *not* a collection. This
+is because the collection name is included in the SQL command (string).

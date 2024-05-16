@@ -1,0 +1,6 @@
+SELECT accommodates 
+  AS sleeps, bedrooms, beds, address_market AS address_city 
+  FROM FLATTEN(listingsAndReviews)
+  WHERE property_type='House' AND address_country='United States'
+  ORDER BY sleeps DESC
+  LIMIT 10
