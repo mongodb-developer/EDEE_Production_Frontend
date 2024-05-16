@@ -163,6 +163,7 @@ class BSON extends Document {}
 
 class BSONDocument extends Document {}
 
+class MongoDocument extends Document {}
 
 //This aims to make Java esque code work and also retain line numbering
 class MagicJava {
