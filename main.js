@@ -24,6 +24,7 @@ async function onLoad() {
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/pastel_on_dark");
   editor.session.setMode("ace/mode/javascript");
+  editor.session.setUseWorker(false);
   editor.setOptions({
     fontFamily: "Source Code Pro",
     fontSize: "12pt"
@@ -243,11 +244,11 @@ function codeChangeHandler()
   getButton.hidden = true;
   postButton.hidden = true
 
-  if(data.search("function get_") != -1) {
+  if(data.search(" get_") != -1) {
     getButton.hidden = false;
  
   }
-  if(data.search("function post_") != -1) {
+  if(data.search(" post_") != -1) {
     postButton.hidden = false;
   }
 }

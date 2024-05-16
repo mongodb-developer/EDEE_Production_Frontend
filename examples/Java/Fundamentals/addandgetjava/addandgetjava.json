@@ -1,0 +1,40 @@
+{
+  "bookingId": "HLB123456789",
+  "customer": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johndoe@example.com",
+    "phoneNumber": "+1234567890"
+  },
+  "property": {
+    "propertyId": "PROP789",
+    "propertyName": "Beachfront Paradise",
+    "location": "123 Ocean View Lane, Beachtown",
+    "type": "Villa",
+    "amenities": ["WiFi", "Air Conditioning", "Pool", "Beach Access"]
+  },
+  "bookingDates": {
+    "checkIn": "2024-06-15",
+    "checkOut": "2024-06-22"
+  },
+  "guests": {
+    "adults": 2,
+    "children": 2,
+    "infants": 1
+  },
+  "pricing": {
+    "nightlyRate": 250.00,
+    "cleaningFee": 75.00,
+    "taxRate": 10.00,
+    "totalNights": 7,
+    "totalCost": 1925.00,
+    "currency": "USD"
+  },
+  "payment": {
+    "status": "Confirmed",
+    "method": "Credit Card",
+    "transactionId": "TXN9988776655"
+  },
+  "specialRequests": "Late check-out requested, baby cot needed",
+  "bookingStatus": "Confirmed"
+}

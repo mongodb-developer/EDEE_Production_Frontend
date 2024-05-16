@@ -1,0 +1,11 @@
+This example takes POSTed JSON text and parses it to a MongoDB document.
+It does no validation of what is posted, you would in a real system.
+It populates the _id field with the primary key and also converts two
+String fields to Dates before adding to MongoDB
+
+Get creates a query object and populates it from the URL before finding 
+the matching document.
+
+You will see the second time you post you hit a duplicate primary key error, update
+the BookingId in the JSON to resolve that.
+

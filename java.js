@@ -21,6 +21,7 @@ class Document {
 
   put(key, value) {
     this[key] = value;
+    return this;
   }
 
   putAll(obj) {
@@ -44,6 +45,7 @@ class Document {
   toJson() {
     return EJSON.stringify(this);
   }
+
 
   get(key, defaultValue) {
     if (this[key] != undefined) {
@@ -165,6 +167,11 @@ class BSONDocument extends Document {}
 
 class MongoDocument extends Document {}
 
+class SortOrder {
+  static DESC = -1;
+  static ASC = 1;
+
+}
 //This aims to make Java esque code work and also retain line numbering
 class MagicJava {
   static JStoJava(javacode) {
@@ -172,9 +179,34 @@ class MagicJava {
     javacode = javacode.replace(/^\s*package/gm, "//     ");
     javacode = javacode.replace(/^\s*import/gm, "//     ");
 
-    return javacode;
-    /* THis is all very experiemental */
+    //Alow Java type console writes
 
+    javacode = javacode.replaceAll("System.out.println", "conso1e.log");
+    javacode = javacode.replaceAll("System.err.println", "conso1e.log");
+    javacode = javacode.replaceAll("logger.info", "conso1e.log");
+    javacode = javacode.replaceAll("logger.warn", "conso1e.log");
+    javacode = javacode.replaceAll("logger.debug", "conso1e.log");
+
+    // Allow us to define functions nicely)
+    javacode = javacode.replaceAll("SimRequest", "");
+    javacode = javacode.replaceAll("SimResponse", "");
+    javacode = javacode.replace(/void\s*(?=(get_|post_|initWebService))/g,"async function ")
+
+    return javacode;
+    /* THis is all very experimental */
+
+
+      
+  /*
+  javacode = javacode.replace(/Document /g,"var     ");
+  javacode = javacode.replace(/Bson /g,"var  ");
+  javacode = javacode.replace(/String /g,"var   ");
+
+  const classAsVar = /^(?<=\s+)class\s+([A-Za-z0-9_]*)/mg;
+  javacode = javacode.replace(classAsVar,"var $1 = class $1")
+  */
+
+  
     // Any variable declared by type becomes var - lets try this without a list of types first
     const allDataTypes =
       /^\s*(?!class)[A-Za-z0-9_<>]+\s(?=\s*[A-Za-z0-9_]+\s)/gm;
