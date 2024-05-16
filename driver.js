@@ -14,7 +14,6 @@
  */
 class MongoClient {
 
-
   async getRealmUser () {
     if (!(await this.connect())) throw new Error(this.lastError);
     return this.user;
@@ -82,7 +81,7 @@ class MongoClient {
     MongoClient._nServerCalls++;
     return rval.result;
   }
-
+q
   /**
    *
    * @param {String} dbName
@@ -230,7 +229,7 @@ class MongoDatabase {
    * timeSeries or validator
    * @param {String} collName
    * @param {Object} options
-   * @returns  Object showing success or failure
+   * @returns Object showing success or failure
    */
   async createCollection(collName, options) {
     if (!(await this.mongoClient.connect()))
@@ -240,6 +239,27 @@ class MongoDatabase {
       this.dbName,
       collName,
       options
+    );
+    if (rval.result.ok == false) {
+      throw new Error(JSON.stringify(rval));
+    }
+    return rval;
+  }
+
+  /**
+   * Sends an SQL query to the backend for this database. Returns the result of that SQL
+   * query. The query must be read-only. The backend will limit the returned results to 
+   * 100 rows.
+   * @param {String} sqlQueryString 
+   * @returns an array of the matching row
+   */
+  async sql(sqlQueryString) {
+    if (!(await this.mongoClient.connect()))
+      throw new Error(this.mongoClient.lastError);
+    MongoClient._nServerCalls++;
+    const rval = await this.mongoClient.user.functions.sql(
+      this.dbName,
+      sqlQueryString
     );
     if (rval.result.ok == false) {
       throw new Error(JSON.stringify(rval));

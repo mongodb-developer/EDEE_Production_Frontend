@@ -1,0 +1,5 @@
+SELECT accommodates AS sleeps, bedrooms, beds, address 
+  FROM listingsAndReviews 
+  WHERE property_type='House'
+  ORDER BY sleeps DESC
+  LIMIT 10
