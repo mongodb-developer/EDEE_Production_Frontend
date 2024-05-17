@@ -1,0 +1,15 @@
+One of the most common design patterns in MongoDB is the Bucket pattern.
+
+A Bucket pattern us used where you want to store a number of small, related 
+data points together for speed of retrieval to you push each new data point
+into an array as it arrives.
+
+This however gives you the issue that the array can grow without limit, this will
+both impact performance once it becomes larger as it gets slower to update the record
+once it grows larger. It also risks hitting a maximum size limit.
+
+Instead, we limit the array size as before but use upsert to automatically create 
+a new document once the limit is reached.
+
+Upset (Update with insert)  flag means: If you do not find a document matching this
+ query then create one using the query parameters and update modifiers.

@@ -2,7 +2,7 @@ You are building a task/workflow queue to assign resources to tasks.
 
 You have three endpoints already defined:
 
- POST to /v1/Task will create a new Task record 
+POST to /v1/Task will create a new Task record 
 GET /v1/Task lists all tasks in all statuses.
 POST to https://hostname:5500/service/Complete/<taskid> to flag a task as complete
 

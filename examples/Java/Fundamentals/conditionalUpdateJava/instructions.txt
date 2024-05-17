@@ -1,0 +1,14 @@
+Updates in MongoDB are based on a query and a set of modifications,
+ many of which are relative to the current value.
+
+ Increment a number, Push an element into an Array - not reading an oversriting.
+
+ This combination of query conditions and relative updates means you can safely
+ perform operation without taking a lock in advance, a lock is taken during
+the operation to ensure that the operations are performed only if the conditions
+are true.
+
+In this case we are recording the 'IP Address' of someone calling this API -
+imagine we are recording who views a page but we have also set a limit to record 
+only the first N views then stop recording. In the next exercise we see a bit more of this.
+

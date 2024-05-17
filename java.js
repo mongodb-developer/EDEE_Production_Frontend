@@ -161,6 +161,12 @@ class Document {
   }
 }
 
+class UpdateOptions {
+  constructor() {
+    this._upsert = false;
+  }
+}
+
 class BSON extends Document {}
 
 class BSONDocument extends Document {}
