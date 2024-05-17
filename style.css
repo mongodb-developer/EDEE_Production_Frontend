@@ -19,7 +19,7 @@ table,td,tr {
 
 }
 .examples {
-  background-image: url("images/Branded_1920x1080_2.png");
+  background-image: url("../../images/Branded_1920x1080_2.png");
   background: var(--mist);
   height: 100%;
 margin: 0;
