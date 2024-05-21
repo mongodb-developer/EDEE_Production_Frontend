@@ -2,6 +2,7 @@ let code, response, endpointName, databox, infobox;
 let codeChanged;
 let _exampleName = []; //Examples used for different orgs
 let _saveFileName = null;
+let __exsection = null;
 
 const serviceHostname = "https://edee.mongodb.com/v1/";
 
@@ -13,6 +14,13 @@ async function onLoad() {
   if (myURL.searchParams && myURL.searchParams.get("org")) {
     localStorage.setItem("organization", myURL.searchParams.get("org"));
   }
+
+  if (myURL.searchParams && myURL.searchParams.get("s")) {
+    __exsection = myURL.searchParams.get("s")
+  }
+
+
+
   // If an org name is in LocalStorage then use it to set the examples page
   // This lets us have different examples based on the last link you used with org
 
