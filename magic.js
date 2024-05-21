@@ -91,13 +91,9 @@ function cleanCode(sourcecode) {
   sourcecode = sourcecode.replaceAll("const ", "var  ");
   sourcecode = sourcecode.replaceAll("let ", "var ");
   sourcecode = sourcecode.replaceAll("console", "conso1e");
-  sourcecode = sourcecode.replaceAll("System.out.println", "conso1e.log");
-  sourcecode = sourcecode.replaceAll("System.err.println", "conso1e.log");
-  sourcecode = sourcecode.replaceAll("logger.info", "conso1e.log");
-  sourcecode = sourcecode.replaceAll("logger.warn", "conso1e.log");
-  sourcecode = sourcecode.replaceAll("logger.debug", "conso1e.log");
-  const classAsVar = /^(?<=\s+)class\s+([A-Za-z0-9_]*)/mg;
-  sourcecode = sourcecode.replace(classAsVar,"var $1 = class $1")
+
+  // Java isms
+  
   sourcecode = MagicJava.JStoJava(sourcecode);
   return sourcecode;
 }

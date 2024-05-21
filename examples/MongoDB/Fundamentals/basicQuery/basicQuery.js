@@ -5,10 +5,10 @@ var listingsCollection;
 // in Canada with a pool (under amenities) ? What suburb is it in?
 
 async function get_PropertyDetails(req, res) {
-  var query = {};
 
-  
+
   // 5 Bedrooms or more in Turkey
+  var query = {};
   query.beds = { $gte : 5 }; 
   query["address.country"] = "Turkey";
 
