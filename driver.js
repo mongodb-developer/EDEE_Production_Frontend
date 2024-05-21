@@ -776,12 +776,14 @@ class MongoCollection {
   async countDocuments(query) {
     if (!(await this.mongoClient.connect()))
       throw new Error(this.mongoClient.lastError);
+    if(!query) { query = {}; }
     MongoClient._nServerCalls++;
     const rval = await this.mongoClient.user.functions.count(
       this.dbName,
       this.collName,
       query
     );
+    console.log(rval)
     return rval.result;
   }
 }
