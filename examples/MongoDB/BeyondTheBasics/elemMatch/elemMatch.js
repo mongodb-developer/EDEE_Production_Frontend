@@ -5,16 +5,16 @@ async function get_Data(req, res) {
   var query = {};
 
   // WE WANT TO FETCH RECORDS WITH "LARGE CIRCLES"
+  //Try the queries below
 
-  // Incorrect as this is matching whole object and none of the array elements
-  // eaxctly match this: 
+    // This returns too many as it is matching those two conditions independantly
+   query = { "components.shape": "circle", "components.size": "large" };
+
+  // This matches NOTHING as it's looking for this exact object
   // query.components = { shape: "circle", size: "large" };
 
-  // Correct - Match is an element matches the sub query
+  //  This is correct as it applies the query to each element.
   // query.components  = { $elemMatch: { shape: "circle", size: "small" }} ;
-
-  // Incorrect returns  record if any component is a circle and any is small
-  query = { "components.shape": "circle", "components.size": "large" };
 
   var result = await arrayExample.find(query).toArray();
   res.status(200);

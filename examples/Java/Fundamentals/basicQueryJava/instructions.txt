@@ -1,0 +1,3 @@
+Press GET to run the predefined Query,
+Can you modify the query to find the cheapest
+1 bedroom Apartment in Barcelona , Spain.

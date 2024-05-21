@@ -140,6 +140,7 @@ q
         example: _exampleName,
         event,
         site: __hostingsite,
+        section: __exsection
       }); // Ignore promise
       if (MongoClient._serverLatency == -1) {
         const startTime = Date.now();
