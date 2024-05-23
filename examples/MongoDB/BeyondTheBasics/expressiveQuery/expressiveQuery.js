@@ -16,7 +16,7 @@ async function get_Query(req, res) {
     "address.country": 1,
     "address.market": 1,
     beds: 1,
-    accomodates: 1,
+    accommodates: 1,
     price: 1,
     cleaning_fee: 1,
     guests_included: 1,
