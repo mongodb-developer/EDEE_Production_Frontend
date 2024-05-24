@@ -124,6 +124,7 @@ q
     //This is weirdly critical as JSFiddle clears the session cookies each time
     //So anonymous users aren't retained we also want to be able to get back to our data
     const realmApp = new Realm.App({ id: __atlasappid });
+    window.__realmApp = realmApp;
     const credential = Realm.Credentials.emailPassword(
       this.userName,
       this.passWord
@@ -783,7 +784,6 @@ class MongoCollection {
       this.collName,
       query
     );
-    console.log(rval)
     return rval.result;
   }
 }
