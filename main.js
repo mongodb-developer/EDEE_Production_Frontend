@@ -231,9 +231,7 @@ async function loadTemplateCode(fname) {
         console.error(`Server Error ocurred: ${syntaxErrorMessage}`);
       }
 
-    } else {
-      endpointName.innerText = "";
-    }
+    } 
 
   }
 
