@@ -24,7 +24,7 @@ async function onLoad() {
   // If an org name is in LocalStorage then use it to set the examples page
   // This lets us have different examples based on the last link you used with org
 
-  if( localStorage.getItem("organization") &&  document.getElementById("exampleLink")) {
+  if (localStorage.getItem("organization") && document.getElementById("exampleLink")) {
     document.getElementById("exampleLink").href = `examples/${localStorage.getItem("organization")}.html`
   }
 
@@ -37,7 +37,7 @@ async function onLoad() {
     fontFamily: "Source Code Pro",
     fontSize: "12pt"
   });
-  editor.getSession().on('change', function() {
+  editor.getSession().on('change', function () {
     codeChangeHandler()
   });
 
@@ -53,7 +53,7 @@ async function onLoad() {
     fontSize: "12pt"
   });
 
-  _code = editor; 
+  _code = editor;
   //_output = document.getElementById("response");
   _output = outputFormatted
 
@@ -73,7 +73,7 @@ async function onLoad() {
       document.title = myURL.searchParams.get("src").split("_").join("/");
     }
   }
-  setTimeout(codeChangeHandler,0); 
+  setTimeout(codeChangeHandler, 0);
 }
 
 
@@ -83,7 +83,7 @@ function loadLocalCode(filePath) {
   reader.readAsText(filePath);
 
   //_output.innerText = "";
-  _output.setValue("",-1);
+  _output.setValue("", -1);
 
   _postdata.innerText = "";
 
@@ -115,16 +115,17 @@ async function callService(method) {
   conso1e.contents = "";
   try {
     // loader.style.visibility = "visible";
-    _output.setValue("",-1);
+    _output.setValue("", -1);
     const fullURL = serviceHostname + endpointName.innerText;
-    MongoClient._nServerCalls=0; 
+    MongoClient._nServerCalls = 0;
     const startTime = Date.now();
     const response = await callVirtualEndpoint(fullURL, method);
     const endTime = Date.now();
 
+
     let timeToShow = Math.floor((endTime - startTime) - (MongoClient._serverLatency * MongoClient._nServerCalls));
-    if (timeToShow<1) timeToShow=1; 
-   
+    if (timeToShow < 1) timeToShow = 1;
+
     let renderOut = "";
 
     if (conso1e.contents) {
@@ -149,13 +150,18 @@ async function callService(method) {
       renderOut += JSON.stringify(response._data, null, 2);
     }
 
-    _output.setValue(renderOut,-1);
+    _output.setValue(renderOut, -1);
+
+    // Was this a winner?
+    if (window.__verify_challenge && typeof window.__verify_challenge == "function") {
+       window.__verify_challenge(response);
+    }
+
   } catch (error) {
     console.error(error);
     messageBox(error); // Fatal problem
-  } finally {
-    // loader.style.visibility = "hidden";
-  }
+  } 
+
 }
 
 //Load a JS file and populate the code side
@@ -192,29 +198,55 @@ async function loadTemplateCode(fname) {
   if (response.status == 200) {
     buttons = await response.text();
     const buttonData = JSON.parse(buttons);
-    for( let button in buttonData) {
+    for (let button in buttonData) {
       container = document.getElementById("buttons");
       newButton = document.createElement("button");
-      newButton.innerText=button
-      newButton.addEventListener("click", () => { showInfo(buttonData[button])}, false);
+      newButton.innerText = button
+      newButton.addEventListener("click", () => { showInfo(buttonData[button]) }, false);
       newButton.classList.add("button");
 
       container.appendChild(newButton);
       //<button class="button" onclick="callService('GET')" id="callServiceGET"> GET </button>
     }
-  } 
+
+    //Fetch a challenge tester if it exists
+    response = await fetch(`${url}_challenge.js`);
+    if (response.status == 200) {
+      challengeCode = await response.text();
+      const challengeHandler = document.createElement("script");
+      challengeHandler.id = "chandler";
+
+      document.body.appendChild(challengeHandler);
+
+      window.addEventListener("error", (event) => {
+        console.log(event);
+        syntaxOKFlag = false;
+        syntaxErrorMessage = `${event.message} : Line ${event.lineno} Col: ${event.colno}`;
+      });
+
+      syntaxOKFlag = true;
+      challengeHandler.innerHTML = challengeCode;
+
+      if (!syntaxOKFlag) {
+        console.error(`Server Error ocurred: ${syntaxErrorMessage}`);
+      }
+
+    } else {
+      endpointName.innerText = "";
+    }
+
+  }
 
 
 }
 
 // This can get more fancy over time if needs be
-async function showInfo(file)
-{
+async function showInfo(file) {
   const url = "examples/" + _exampleName.join("/") + "/";
   const response = await fetch(url + file);
   if (response.status == 200) {
-    _output.setValue(r = await response.text(),-1)
-  } 
+    _output.setValue(r = await response.text(), -1)
+  }
 }
 
 function saveToClipboard() {
@@ -243,8 +275,7 @@ function saveCode() {
   }, 0);
 }
 
-function codeChangeHandler()
-{
+function codeChangeHandler() {
 
   data = _code.getValue();
   const getButton = document.getElementById("callServiceGET");
@@ -252,11 +283,11 @@ function codeChangeHandler()
   getButton.hidden = true;
   postButton.hidden = true
 
-  if(data.search(" get_") != -1) {
+  if (data.search(" get_") != -1) {
     getButton.hidden = false;
- 
+
   }
-  if(data.search(" post_") != -1) {
+  if (data.search(" post_") != -1) {
     postButton.hidden = false;
   }
 }
