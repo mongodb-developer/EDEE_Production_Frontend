@@ -5,6 +5,7 @@
     <script src="appconfig.js"></script>
     <script src="//ajaxorg.github.io/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://unpkg.com/realm-web/dist/bundle.iife.js"></script>
+    <script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
     <script src="modaldialog.js"></script>
     <script src="bson.js"></script>
     <script src="main.js"></script>
@@ -15,9 +16,6 @@
     <script src="helpers.js"></script>
     <script src="java.js"></script>
     <link rel="stylesheet" href="style.css">
-
-   
-   
 </head>
 
 <body onLoad="onLoad()">
@@ -31,8 +29,6 @@
             <a class="menu" onclick="saveCode()">Save</a>
             <a class="menu" onclick="_saveFileName=null;saveCode()">Save As</a>
             <input style="display:none" onchange="loadLocalCode(this.files[0])" class="loadbutton" id="uploadCode" type="file" />
-   
-
         </div>
         <div id="infobox" class="infobox"></div>
         <div class="flex-container">
@@ -63,7 +59,6 @@ function get_Hello(req, res) {
             <!-- POST data output -->
             <div class="label">POST Data:</div>
             <div class="postdata" contenteditable id="postdata">
-              
             </div>
             <div id="buttons" class="button-container">
                 <button class="button" onclick="callService('GET')" id="callServiceGET"> GET </button>
