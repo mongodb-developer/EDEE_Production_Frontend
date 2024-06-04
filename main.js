@@ -233,27 +233,28 @@ async function loadTemplateCode(fname) {
 async function showInfo(fileName) {
   const css = '<head><link rel="stylesheet" href="instructionsStyle.css"></link></head>';
   const url = 'examples/' + _exampleName.join('/') + '/';
-  extension = fileName.split('.').pop();
+  let fileBody = '';
+  const response = await fetch(url + fileName);
+  if (response.status == 200) {
+    fileBody = await response.text();
+  }
+  const extension = fileName.split('.').pop();
+
   switch(extension) {
     case 'html':
-      window.open(url + fileName, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+      const htmlHtml = css + fileBody;
+      var wnd = window.open('about:blank', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+      wnd.document.write(htmlHtml);
       break;
     case 'md':
-      const mdResponse = await fetch(url + fileName);
-      if (mdResponse.status == 200) {
-        const converter = new showdown.Converter();
-        let mdText = await mdResponse.text();
-        let html = converter.makeHtml(mdText);
-        html = css + html;
-        var wnd = window.open('about:blank', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
-        wnd.document.write(html);
-      }
+      const converter = new showdown.Converter();
+      let mdHtml = converter.makeHtml(fileBody);
+      mdHtml = css + mdHtml;
+      var wnd = window.open('about:blank', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+      wnd.document.write(mdHtml);
       break;
     default:
-      const response = await fetch(url + fileName);
-      if (response.status == 200) {
-        _output.setValue(r = await response.text(), -1)
-      }
+      _output.setValue(r = fileBody, -1)
   }
 }
 
