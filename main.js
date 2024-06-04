@@ -19,15 +19,12 @@ async function onLoad() {
     __exsection = myURL.searchParams.get("s")
   }
 
-
-
   // If an org name is in LocalStorage then use it to set the examples page
   // This lets us have different examples based on the last link you used with org
 
   if (localStorage.getItem("organization") && document.getElementById("exampleLink")) {
     document.getElementById("exampleLink").href = `examples/${localStorage.getItem("organization")}.html`
   }
-
 
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/pastel_on_dark");
@@ -75,8 +72,6 @@ async function onLoad() {
   }
   setTimeout(codeChangeHandler, 0);
 }
-
-
 
 function loadLocalCode(filePath) {
   let reader = new FileReader(); // no arguments
@@ -230,20 +225,35 @@ async function loadTemplateCode(fname) {
       if (!syntaxOKFlag) {
         console.error(`Server Error ocurred: ${syntaxErrorMessage}`);
       }
-
     } 
-
   }
-
-
 }
 
 // This can get more fancy over time if needs be
-async function showInfo(file) {
-  const url = "examples/" + _exampleName.join("/") + "/";
-  const response = await fetch(url + file);
-  if (response.status == 200) {
-    _output.setValue(r = await response.text(), -1)
+async function showInfo(fileName) {
+  const css = '<head><link rel="stylesheet" href="instructionsStyle.css"></link></head>';
+  const url = 'examples/' + _exampleName.join('/') + '/';
+  extension = fileName.split('.').pop();
+  switch(extension) {
+    case 'html':
+      window.open(url + fileName, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+      break;
+    case 'md':
+      const mdResponse = await fetch(url + fileName);
+      if (mdResponse.status == 200) {
+        const converter = new showdown.Converter();
+        let mdText = await mdResponse.text();
+        let html = converter.makeHtml(mdText);
+        html = css + html;
+        var wnd = window.open('about:blank', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+        wnd.document.write(html);
+      }
+      break;
+    default:
+      const response = await fetch(url + fileName);
+      if (response.status == 200) {
+        _output.setValue(r = await response.text(), -1)
+      }
   }
 }
 

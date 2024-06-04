@@ -1,0 +1,356 @@
+.docs {
+    background: var(--mist);
+    height: 100%;
+  }
+  
+  
+  table,td,tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 1em;
+    background-color: white;
+    
+  }
+  .coach {
+    position: absolute;
+    width: 10%;
+    top: 80%;
+    left: 80%;
+  
+  }
+  .examples {
+    background-image: url("../../images/Branded_1920x1080_2.png");
+    background: var(--mist);
+    height: 100%;
+  margin: 0;
+  padding: 1%;
+  
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 50%;
+  }
+  
+  a {
+    text-decoration: none;
+    color: rgb(31, 127, 79);
+  }
+  
+  h1 {
+    font-family: MongoDB Value Serif;
+    font-weight: 200;
+    font-size: 42pt;
+    margin-top: 2pt;
+    margin-bottom: 10pt;
+  }
+  
+  h2 {
+    font-family: 'Euclid Circular A', monospace;
+    font-weight: 200;
+  }
+  
+  html {
+    font-family: 'Euclid Circular A', monospace;
+    background: white;
+    color: var(--slate);
+    height: 100%;
+  }
+  
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #editor { 
+    border: 1px solid green;
+    color: var(--springgreen);
+    background: black;
+    width: 48vw;
+    height: 85vh;
+    margin: 1em;
+    display: block;
+    padding: 1em;
+    white-space: pre;
+    overflow: scroll;
+    font-family: 'Source Code Pro', monospace;
+    border-radius: 1em;
+    font-size: small;
+  }
+  
+  .infobox {
+    background: white;
+    color: black;
+  
+    font-size: large;
+    margin: 1em;
+    padding: 1em;
+    border: 2px solid red;
+  }
+  
+  .infobox:empty {
+    display: none;
+  }
+  
+  .sim-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .menu:active {
+    background-color: var(--springgreen);
+  }
+  
+  .loadbutton::file-selector-button {
+    background-color: var(--forestgreen);
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: large;
+    border-radius: 0.5em;
+    margin: 0.5em;
+  
+    padding: 0.5em 1em 0.5em 1em;
+    overflow: hidden;
+  }
+  
+  button:active {
+    background-color: var(--forestgreen);
+  }
+  
+  .code {
+    border: 1px solid green;
+    color: var(--springgreen);
+    background: black;
+    width: 48vw;
+    height: 85vh;
+    margin: 1em;
+    display: block;
+    padding: 1em;
+    white-space: pre;
+    overflow: scroll;
+    font-family: 'Source Code Pro', monospace;
+    border-radius: 1em;
+    font-size: small;
+  
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+  }
+  
+  
+  .menu-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 1em;
+  }
+  
+  .menu {
+    background-color: var(--forestgreen);
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: large;
+    border-radius: 0.5em;
+    margin: 0.5em;
+  
+    padding: 0.5em 1em 0.5em 1em;
+    overflow: hidden;
+  }
+  
+  menu.a:hover,
+  menu.a:active {
+    background-color: red;
+  }
+  
+  
+  .button {
+    font-size: large;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    background-color: white;
+    padding: 0.5em 1em 0.5em 1em;
+  
+  }
+  
+  .label {
+    margin: 1em;
+  }
+  
+  .test {
+    border-radius: 1em;
+    width: 48vw;
+    height: 88vh;
+    margin: 1vw;
+    display: flex;
+    background: rgb(240, 240, 240);
+    flex-direction: column;
+  
+  
+  }
+  
+  .url {
+    margin: 1em;
+    border: 1px solid black;
+    margin-left: 3em;
+    padding: 0.5em;
+    background: white;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  
+  #endpoint {
+    border: 1px solid rgb(240, 240, 240);
+    width: 40vw;
+  
+  }
+  
+  
+  .path {
+    display: inline-block;
+    font-family: 'Source Code Pro', monospace;
+    background: white;
+    color: black;
+    margin: 0em;
+    outline: 1px solid darkgray;
+    padding: 0em;
+  
+  }
+  
+  .staticpath {
+    margin-left: 1em;
+    margin-right: 0em;
+    outline: 0px solid transparent;
+  }
+  
+  .postdata {
+    border: 1px solid green;
+    color: black;
+    background: white;
+  
+    height: 20%;
+    margin: 1em;
+    display: block;
+    padding: 1em;
+    white-space: pre;
+    margin-left: 3em;
+    border-radius: 0.5em;
+    overflow: scroll;
+    font-family: 'Source Code Pro', monospace;
+    font-size: small;
+  }
+  
+  .response {
+    padding: 1em;
+    background: white;
+  
+    border: 1px solid black;
+    height: 90%;
+    margin: 1em;
+    white-space: pre-wrap;
+    margin-left: 3em;
+    overflow: scroll;
+    border-radius: 0.5em;
+    font-family: 'Source Code Pro', monospace;
+    font-size: small;
+  }
+  
+  /* An activity indicator */
+  /* commented out, we can add it in the future if that's needed */
+  
+  /* .loader {
+    border: 16px solid var(--forestgreen); 
+    border-top: 16px solid var(--springgreen);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+    -webkit-animation: spin 2s linear infinite; /* Safari * / 
+  } 
+  
+  /* Safari * / 
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  } */
+  
+  
+  
+  
+  :root {
+    --slate: #001e2b;
+    --springgreen: #00ed64;
+    --forestgreen: #00684a;
+    --mist: #e3fcf7;
+    --lavender: #f9ebff;
+  }
+  
+  @font-face {
+    font-family: Euclid Circular A;
+    src: url(https://static.mongodb.com/com/fonts/EuclidCircularA-Regular-WebXL.woff2) format('woff2');
+    font-weight: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: Euclid Circular A;
+    src: url(https://static.mongodb.com/com/fonts/EuclidCircularA-Medium-WebXL.woff2) format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: MongoDB Value Serif;
+    src: url(https://static.mongodb.com/com/fonts/MongoDBValueSerif-Regular.woff2) format('woff2');
+    font-weight: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: MongoDB Value Serif;
+    src: url(https://static.mongodb.com/com/fonts/MongoDBValueSerif-Medium.woff2) format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: MongoDB Value Serif;
+    src: url(https://static.mongodb.com/com/fonts/MongoDBValueSerif-Bold.woff2) format('woff2');
+    font-weight: bold;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: Source Code Pro;
+    src: url(https://static.mongodb.com/com/fonts/SourceCodePro-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: Source Code Pro;
+    src: url(https://static.mongodb.com/com/fonts/SourceCodePro-Medium.ttf) format('truetype');
+    font-weight: 500;
+    font-display: swap;
+  
+  }
+  
+  
