@@ -233,24 +233,30 @@ async function loadTemplateCode(fname) {
 async function showInfo(fileName) {
   const css = '<head><link rel="stylesheet" href="instructionsStyle.css"></link></head>';
   const url = 'examples/' + _exampleName.join('/') + '/';
+  const windowHeight = 1024;
+  const windowWidth = 800;
+  
   let fileBody = '';
   const response = await fetch(url + fileName);
   if (response.status == 200) {
     fileBody = await response.text();
+  } else {
+    console.error(`Failed to load file from ${url + filename}. Return code ${response.status}`);
+    return;
   }
   const extension = fileName.split('.').pop();
 
   switch(extension) {
     case 'html':
       const htmlHtml = css + fileBody;
-      var wnd = window.open('about:blank', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+      var wnd = window.open('about:blank', fileName, `location=no,height=${windowHeight},width=${windowWidth},scrollbars=yes,status=no`);
       wnd.document.write(htmlHtml);
       break;
     case 'md':
       const converter = new showdown.Converter();
       let mdHtml = converter.makeHtml(fileBody);
       mdHtml = css + mdHtml;
-      var wnd = window.open('about:blank', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+      var wnd = window.open('about:blank', fileName, `location=no,height=${windowHeight},width=${windowWidth},scrollbars=yes,status=no`);
       wnd.document.write(mdHtml);
       break;
     default:

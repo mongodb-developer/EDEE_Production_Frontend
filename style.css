@@ -3,28 +3,26 @@
   height: 100%;
 }
 
-
 table,td,tr {
   border: 1px solid black;
   border-collapse: collapse;
   padding: 1em;
-  background-color: white;
-  
+  background-color: white;  
 }
+
 .coach {
   position: absolute;
   width: 10%;
   top: 80%;
   left: 80%;
-
 }
+
 .examples {
   background-image: url("../../images/Branded_1920x1080_2.png");
   background: var(--mist);
   height: 100%;
-margin: 0;
-padding: 1%;
-
+  margin: 0;
+  padding: 1%;
 }
 
 .row {
@@ -52,8 +50,6 @@ a {
   background: white;
 }
 
-
-
 h1 {
   font-family: MongoDB Value Serif;
   font-weight: 200;
@@ -65,7 +61,6 @@ h1 {
 h2 {
   font-family: 'Euclid Circular A', monospace;
   font-weight: 200;
-
 }
 
 html {
@@ -99,7 +94,6 @@ html {
 .infobox {
   background: white;
   color: black;
-
   font-size: large;
   margin: 1em;
   padding: 1em;
@@ -115,7 +109,6 @@ html {
   flex-direction: column;
 }
 
-
 .menu:active {
   background-color: var(--springgreen);
 }
@@ -130,7 +123,6 @@ html {
   font-size: large;
   border-radius: 0.5em;
   margin: 0.5em;
-
   padding: 0.5em 1em 0.5em 1em;
   overflow: hidden;
 }
@@ -153,7 +145,6 @@ button:active {
   font-family: 'Source Code Pro', monospace;
   border-radius: 1em;
   font-size: small;
-
 }
 
 .button-container {
@@ -179,7 +170,6 @@ button:active {
   font-size: large;
   border-radius: 0.5em;
   margin: 0.5em;
-
   padding: 0.5em 1em 0.5em 1em;
   overflow: hidden;
 }
@@ -189,14 +179,12 @@ menu.a:active {
   background-color: red;
 }
 
-
 .button {
   font-size: large;
   border-radius: 0.5em;
   margin: 0.5em;
   background-color: white;
   padding: 0.5em 1em 0.5em 1em;
-
 }
 
 .label {
@@ -211,8 +199,6 @@ menu.a:active {
   display: flex;
   background: rgb(240, 240, 240);
   flex-direction: column;
-
-
 }
 
 .url {
@@ -226,13 +212,10 @@ menu.a:active {
   flex-direction: row;
 }
 
-
 #endpoint {
   border: 1px solid rgb(240, 240, 240);
   width: 40vw;
-
 }
-
 
 .path {
   display: inline-block;
@@ -242,7 +225,6 @@ menu.a:active {
   margin: 0em;
   outline: 1px solid darkgray;
   padding: 0em;
-
 }
 
 .staticpath {
@@ -255,7 +237,6 @@ menu.a:active {
   border: 1px solid green;
   color: black;
   background: white;
-
   height: 20%;
   margin: 1em;
   display: block;
@@ -271,7 +252,6 @@ menu.a:active {
 .response {
   padding: 1em;
   background: white;
-
   border: 1px solid black;
   height: 90%;
   margin: 1em;
@@ -306,9 +286,6 @@ menu.a:active {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 } */
-
-
-
 
 :root {
   --slate: #001e2b;
@@ -365,6 +342,4 @@ menu.a:active {
   src: url(https://static.mongodb.com/com/fonts/SourceCodePro-Medium.ttf) format('truetype');
   font-weight: 500;
   font-display: swap;
-
 }
-
