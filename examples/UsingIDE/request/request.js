@@ -1,18 +1,16 @@
-
-// POST endpoint is passed the post data in body
+// POST endpoint is passed the POST data in `body`
 
 function post_Echo(req, res) {
-  // Request body (POST DATA) is a string.
+  // Request `body` (POST data) is a string.
   var bodyString = req.body;
-  // JSON, EJSON  or Document classes can parse JSON data to object
+  // JSON, EJSON or Document classes can parse JSON data to an object
   var bodyObj = JSON.parse(bodyString);
   res.status(200);
   res.send({ echo: bodyObj });
 }
 
 function get_Echo(req, res) {
-
-  // req.query contains values from the URL
+  // `req.query` contains query parameters from the URL
   var value = req.query.get("value");
   res.status(200);
   res.send({ echo: value });

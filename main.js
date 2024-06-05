@@ -324,15 +324,11 @@ function codeChangeHandler() {
   getButton.hidden = true;
   postButton.hidden = true
 
-  if (containsCode('function get_', data)) {
+  if (containsCode('get_', data)) {
     getButton.hidden = false;
   }
 
-  // if (data.search("function get_") != -1) {
-  //   getButton.hidden = false;
-
-  // }
-  if (containsCode('function post_', data)) {
+  if (containsCode('post_', data)) {
     postButton.hidden = false;
   }
 }
