@@ -22,8 +22,12 @@ Note that you can also use `console.log("xxx")` to include extra information in 
 
 If you want to save a copy of your code and reload it later, use the **Load**, **Save** and **Save As** buttons.
 
+---
+
 ## Challenge
 
 Change the value of the `name` query parameter that's passed to the endpoint URL, and click GET to fetch the results.
+
+---
 
 Click on the **Labs and Examples** or navigate backwards in your browser to pick your next workshop!

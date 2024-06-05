@@ -4,8 +4,12 @@ We've already seen how your `get_xxx` or `post_xxx` function can access simple v
 
 Typically, this data will be in the form of a JSON string. Your code can convert that into an object and then work with that object.
 
+---
+
 ## Challenge
 
 Update the POST data so that the `customerId` is `321`.
+
+---
 
 Click on the **Labs and Examples** or navigate backwards in your browser to pick your next workshop!
