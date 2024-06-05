@@ -14,4 +14,4 @@ If you're reading this after already specifying a different value, uncomment `sy
 
 ---
 
-Click on the **Labs and Examples** or navigate backwards in your browser to pick your next workshop!
+Click on the **Labs and Examples** button or navigate backwards in your browser to pick your next workshop!

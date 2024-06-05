@@ -1,21 +1,19 @@
 var mongoClient = null;
 var listingsCollection;
-
-// Challenge: Can you modify this to find the cheapest House 
-// in Canada with a pool (under amenities) ? What suburb is it in?
-
+/* 
+Challenge: Can you modify this to find the cheapest house 
+in Canada with a pool (under amenities)? What suburb is it in?
+*/
 async function get_PropertyDetails(req, res) {
-
-
   // 5 Bedrooms or more in Turkey
   var query = {};
-  query.beds = { $gte : 5 }; 
+  query.beds = { $gte: 5 }; 
   query["address.country"] = "Turkey";
 
   var projection = { summary: true, beds: true,
     property_type: true, "address.market": true, price: true};
 
-  // 1 and -1 or constants from driver
+  // 1 for an ascending sort, -1 for descending
   var sortOrder = { price: -1 };
 
   var cursor = listingsCollection

@@ -16,4 +16,4 @@ then execute GET 3 more times.
 
 ---
 
-Click on the **Labs and Examples** or navigate backwards in your browser to pick your next workshop!
+Click on the **Labs and Examples** button or navigate backwards in your browser to pick your next workshop!
