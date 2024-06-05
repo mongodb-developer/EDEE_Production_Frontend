@@ -290,6 +290,32 @@ function saveCode() {
   }, 0);
 }
 
+function containsCode(code, codeBlock) {
+const lines = codeBlock.split('\n');
+let insideBlockComment = false;
+
+for (let line of lines) {
+    let trimmedLine = line;
+    if (trimmedLine.includes('/*')) {
+        insideBlockComment = true;
+    }
+    if (trimmedLine.includes('*/')) {
+        insideBlockComment = false;
+        continue;
+    }
+    if (insideBlockComment) {
+        continue;
+    }
+    const singleLineCommentIndex = trimmedLine.indexOf('//');
+    const codeIndex = trimmedLine.indexOf(code);
+    if (codeIndex !== -1 && (singleLineCommentIndex === -1 || 
+      codeIndex < singleLineCommentIndex)) {
+        return true;
+    }
+}
+return false;
+}
+
 function codeChangeHandler() {
 
   data = _code.getValue();
@@ -298,11 +324,15 @@ function codeChangeHandler() {
   getButton.hidden = true;
   postButton.hidden = true
 
-  if (data.search(" get_") != -1) {
+  if (containsCode('function get_', data)) {
     getButton.hidden = false;
-
   }
-  if (data.search(" post_") != -1) {
+
+  // if (data.search("function get_") != -1) {
+  //   getButton.hidden = false;
+
+  // }
+  if (containsCode('function post_', data)) {
     postButton.hidden = false;
   }
 }

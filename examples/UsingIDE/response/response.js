@@ -1,7 +1,10 @@
-// Serverless web service hosting.
-// get_XXXX or post_XXXX define GET and POST endpoints
+/*
+Serverless web service hosting.
 
-// Both get passed a Request and a Response Object
+get_XXXX or post_XXXX define GET and POST endpoints.
+
+Both get passed a Request and a Response Object.
+*/
 
 function get_Hello(req, res) {
   console.log("Some console output");

@@ -12,7 +12,7 @@ On the right side, the **Endpoint URL** box lets us see the name of the endpoint
 
 The **POST Data** box is empty in this example, but this is where you can provide the data to be sent in the body of a POST request – in most cases, this would be a JSON document.
 
-We then have the buttons to test our GET/POST endpoint, an possibly others. The labels should be self explanatory (e.g. you clicked on **Explanation** to see this explanation!).
+We then have the buttons to test our GET/POST endpoint, an possibly others. The labels should be self explanatory (e.g. you clicked on **Explanation** to see this explanation!)
 
 Beneath the buttons, you can see the **Response** section which contains the response from running the GET/POST function.
 
@@ -24,6 +24,6 @@ If you want to save a copy of your code and reload it later, use the **Load**, *
 
 ## Challenge
 
-Change the value of the `name` query parameter that's passed to the endpoint URL and click GET to fetch the results.
+Change the value of the `name` query parameter that's passed to the endpoint URL, and click GET to fetch the results.
 
 Click on the **Labs and Examples** or navigate backwards in your browser to pick your next workshop!
