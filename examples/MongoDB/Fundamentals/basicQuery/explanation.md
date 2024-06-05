@@ -13,8 +13,6 @@ It then projects in (think the `SELECT` part of a SQL query) these attributes:
 - `address.market`
 - `price`
 
-
-
 ---
 
 ## Challenge
