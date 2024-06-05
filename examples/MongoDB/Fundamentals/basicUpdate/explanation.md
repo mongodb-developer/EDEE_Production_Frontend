@@ -1,6 +1,6 @@
 # Updating existing data
 
-The POST method in this example is used to record the views for particular property. Each time we post, the property's MongoDB document is updated to:
+The POST method in this example is used to record the views for a particular property. Each time we post, the property's MongoDB document is updated to:
 
 - Push the viewer's IP address onto the `viewIp` array
 - Increment the `nViews` count

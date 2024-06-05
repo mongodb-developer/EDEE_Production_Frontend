@@ -12,8 +12,8 @@ async function post_PropertyViews(req, res) {
   var sourceIp = req.sourceIp; // Source of the requests
                                // (randomized in simulator)
   propertyId = req.params[3];
-  time = new Date();
-  query = { _id:  propertyId };
+  const time = new Date();
+  const query = { _id:  propertyId };
 
   updateOps = {
     $set: { lastView: time },
