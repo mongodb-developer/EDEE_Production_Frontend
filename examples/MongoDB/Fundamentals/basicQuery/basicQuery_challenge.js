@@ -11,11 +11,19 @@
 
     if(!firstObj || typeof firstObj != "object") return;
 
+    if(firstObj._id === "17651165") {
+        modal.alert(`Close, but I was really looking for a house, and not an apartment.`);
+    }
+
+    if(firstObj._id === "5505414") {
+        modal.alert(`That meets my criteria, but I was hoping for something a little cheaper.`);
+    }
+
+    
     if(firstObj._id === "2931473") {
         if(firstObj.address && firstObj.address.suburb == "Montréal-Nord") {
             modal.alert(`Correct Answer "${firstObj.address.suburb}", well done`);
 
-            //This code shoudl come out into a top level fn
             console.log(window.__realmApp?.currentUser);
 
             window.__realmApp?.currentUser?.functions.t({

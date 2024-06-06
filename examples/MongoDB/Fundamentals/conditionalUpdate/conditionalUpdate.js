@@ -12,20 +12,25 @@ async function get_PropertyViews(req, res) {
 }
 
 // Every time this is called - add the ip of the caller to a list and
-// increment the number of view by one.
+// increment the number of views by one.
 
 async function post_PropertyViews(req, res) {
   var sourceIp = req.sourceIp; // Source of the requests
                                // (randomized in simulator)
 
   propertyId = req.params[3];
-  query = { _id: propertyId };
-  query.nViews = { $lt: 8 }; //Stop recording at 8 views
+  
+  const time = new Date();
+  const query = { 
+    _id:  propertyId,
+    nViews: { $lt: 8 } // Stop recording at 8 views
+  };
 
-  updateOps = {};
-  updateOps["$set"] = { lastView: new Date() };
-  updateOps["$inc"] = { nViews: 1 };
-  updateOps["$push"] = { viewIp: sourceIp };
+  const updateOps = {
+    $set: { lastView: time },
+    $inc: { nViews: 1 },
+    $push: { viewIp: sourceIp }
+  };
 
   var rval = await viewCollection.updateOne(query, updateOps);
 

@@ -1,41 +1,40 @@
 var mongoClient = null;
 var viewCollection;
 
-/* When we get a POST here, we update the record for that property
-   to increment the number of views, log the last viewed data and 
-   add the IP address of the caller to an array, two of these are
-   relative updates, we don't read the document then write it back
-   as that's a potential race condition */
-
-async function get_PropertyViews(req, res) {
-  propertyId = req.params[3]
-
-  query = { _id:  propertyId};
-
-  var data = await viewCollection.find(query).toArray();
-  res.status(202);
-  res.send(data);
-}
-
-// Every time this is called - add the ip of the caller to a list and
-// increment the number of view by one.
+/* 
+When we get a POST, we update the record for that property
+to increment the number of views, log the last viewed date and 
+add the IP address of the caller to an array. 
+*/
 
 async function post_PropertyViews(req, res) {
 
   var sourceIp = req.sourceIp; // Source of the requests
                                // (randomized in simulator)
   propertyId = req.params[3];
-  query = { _id:  propertyId};
+  const time = new Date();
+  const query = { _id:  propertyId };
 
-  updateOps = {};
-  updateOps["$set"] = { lastView: new Date() };
-  updateOps["$inc"] = { nViews: 1 };
-  updateOps["$push"] = { viewIp: sourceIp };
+  updateOps = {
+    $set: { lastView: time },
+    $inc: { nViews: 1 },
+    $push: { viewIp: sourceIp }
+  };
 
   var rval = await viewCollection.updateOne(query, updateOps);
 
   res.status(202);
   res.send(rval);
+}
+
+async function get_PropertyViews(req, res) {
+  propertyId = req.params[3]
+
+  query = { _id:  propertyId };
+
+  var data = await viewCollection.find(query).toArray();
+  res.status(202);
+  res.send(data);
 }
 
 async function initWebService() {

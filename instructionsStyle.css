@@ -3,28 +3,30 @@
     height: 100%;
   }
   
-  
   table,td,tr {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 1em;
     background-color: white;
+    background-color: white;
+    
+    background-color: white;  
     
   }
+
   .coach {
     position: absolute;
     width: 10%;
     top: 80%;
     left: 80%;
-  
   }
+
   .examples {
     background-image: url("../../images/Branded_1920x1080_2.png");
     background: var(--mist);
     height: 100%;
-  margin: 0;
-  padding: 1%;
-  
+    margin: 0;
+     padding: 1%;
   }
   
   .row {
@@ -37,7 +39,7 @@
   
   a {
     text-decoration: none;
-    color: rgb(31, 127, 79);
+    color: rgb(00, 237, 100);
   }
   
   h1 {
@@ -53,6 +55,13 @@
     font-weight: 200;
   }
   
+  code {
+    /* font-size: large; */
+    font-family: 'Source Code Pro', monospace;
+    font-weight: bolder;
+    color:#00684a;
+  }
+
   html {
     font-family: 'Euclid Circular A', monospace;
     background: white;
@@ -84,7 +93,6 @@
   .infobox {
     background: white;
     color: black;
-  
     font-size: large;
     margin: 1em;
     padding: 1em;
@@ -100,7 +108,6 @@
     flex-direction: column;
   }
   
-  
   .menu:active {
     background-color: var(--springgreen);
   }
@@ -115,7 +122,6 @@
     font-size: large;
     border-radius: 0.5em;
     margin: 0.5em;
-  
     padding: 0.5em 1em 0.5em 1em;
     overflow: hidden;
   }
@@ -138,7 +144,6 @@
     font-family: 'Source Code Pro', monospace;
     border-radius: 1em;
     font-size: small;
-  
   }
   
   .button-container {
@@ -147,6 +152,9 @@
     margin: auto;
   }
   
+  
+  
+    
   
   .menu-container {
     display: flex;
@@ -174,14 +182,12 @@
     background-color: red;
   }
   
-  
-  .button {
+    .button {
     font-size: large;
     border-radius: 0.5em;
     margin: 0.5em;
     background-color: white;
     padding: 0.5em 1em 0.5em 1em;
-  
   }
   
   .label {
@@ -196,6 +202,10 @@
     display: flex;
     background: rgb(240, 240, 240);
     flex-direction: column;
+    flex-direction: column;
+  
+  
+    flex-direction: column; 
   
   
   }
@@ -211,13 +221,14 @@
     flex-direction: row;
   }
   
-  
-  #endpoint {
+    #endpoint {
     border: 1px solid rgb(240, 240, 240);
     width: 40vw;
-  
   }
   
+  
+  
+    
   
   .path {
     display: inline-block;
@@ -227,7 +238,6 @@
     margin: 0em;
     outline: 1px solid darkgray;
     padding: 0em;
-  
   }
   
   .staticpath {
@@ -240,7 +250,6 @@
     border: 1px solid green;
     color: black;
     background: white;
-  
     height: 20%;
     margin: 1em;
     display: block;
@@ -256,7 +265,6 @@
   .response {
     padding: 1em;
     background: white;
-  
     border: 1px solid black;
     height: 90%;
     margin: 1em;
@@ -267,33 +275,6 @@
     font-family: 'Source Code Pro', monospace;
     font-size: small;
   }
-  
-  /* An activity indicator */
-  /* commented out, we can add it in the future if that's needed */
-  
-  /* .loader {
-    border: 16px solid var(--forestgreen); 
-    border-top: 16px solid var(--springgreen);
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 2s linear infinite;
-    -webkit-animation: spin 2s linear infinite; /* Safari * / 
-  } 
-  
-  /* Safari * / 
-  @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  } */
-  
-  
-  
   
   :root {
     --slate: #001e2b;
@@ -350,7 +331,6 @@
     src: url(https://static.mongodb.com/com/fonts/SourceCodePro-Medium.ttf) format('truetype');
     font-weight: 500;
     font-display: swap;
-  
   }
   
   
