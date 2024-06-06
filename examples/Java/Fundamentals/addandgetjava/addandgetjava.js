@@ -7,21 +7,19 @@ import com.mongodb.client.*;
 var mongoClient = null; // MongoClient
 var bookingsCollection = null; // MongoCollection
 
-
 // This takes a "Booking" from request.body (JSON Text)
 // and stores it in MongoDB after converting to the right
 // data types.
 
 void post_Booking(SimRequest request, SimResponse response) {
   var booking = Document.parse(request.body); // Should validate the input.
-  booking.put("_id",booking.bookingId); // Put the Primary Key in the _id field
   
   // Convert JSON strings to dates or other types as needed
-  var bookingDates = booking.get("bookingDates"); // Document
-  bookingDates.put("checkIn",  new Date(bookingDates.getString("checkIn")));
-  bookingDates.put("checkOut" ,  new Date(bookingDates.getString("checkOut")));
+  var bookingDates = booking.get("bookingDates");
+  bookingDates.put("checkIn", new Date(bookingDates.getString("checkIn")));
+  bookingDates.put("checkOut", new Date(bookingDates.getString("checkOut")));
 
-  //Add to MongoDB
+  // Add to MongoDB
   var rval = await bookingsCollection.insertOne(booking);
 
   response.status(201); //HTTP response
@@ -39,17 +37,16 @@ void get_Booking(SimRequest request, SimResponse response) {
   }
 
   logger.info(query);
-  var cursor = bookingsCollection.find(query); //MongoCursor
-
-  var bookings = await cursor.toArray();  //Fetch all from Cursor
+  var cursor = bookingsCollection.find(query); // MongoCursor
+  var bookings = await cursor.toArray();  // Fetch all from Cursor
 
   response.status(200);
   response.send(bookings);
 }
 
 // This is only called when code has changed.
-// Get Username and Password from environment then create the MongoDB Client
-// Also populate the booking collection objects
+// Get Username and Password from environment then create the MongoDB Client.
+// Also populate the booking collection.
 
 async function initWebService() {
   var userName = await system.getenv("MONGO_USERNAME");
