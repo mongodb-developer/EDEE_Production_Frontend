@@ -3,7 +3,7 @@ var some_value = 0;
 async function initWebService() {
   // system.clearenv("SOME_VAR");
 
-  /*
+  /* 
   `getenv("name")` retrieves an environment variable. The first time
   you do so it will ask you to enter a value for it. On subsequent calls,
   it will return the stored value.

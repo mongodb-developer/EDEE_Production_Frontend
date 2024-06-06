@@ -1,5 +1,5 @@
 {
-  "bookingId": "HLB123456789",
+  "_id": "HLB123456789",
   "customer": {
     "firstName": "John",
     "lastName": "Doe",

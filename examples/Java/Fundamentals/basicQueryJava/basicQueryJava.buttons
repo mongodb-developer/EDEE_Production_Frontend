@@ -1,4 +1,4 @@
 {
-    "Instructions": "instructions.txt",
+    "Explanation": "explanation.md",
     "Show Sample Document" : "exampleDoc.json"
 }
