@@ -7,7 +7,6 @@ let __exsection = null;
 const serviceHostname = "https://edee.mongodb.com/v1/";
 
 async function onLoad() {
-
   // If we supplied an org name in the URL then write that to Localstorage
   const myURL = new URL(window.location);
 
@@ -26,13 +25,23 @@ async function onLoad() {
     document.getElementById("exampleLink").href = `examples/${localStorage.getItem("organization")}.html`
   }
 
+  let editorFontSize;
+
+  if (localStorage.getItem("editorFontSize")) {
+    editorFontSize = localStorage.getItem("editorFontSize");
+  } else {
+    localStorage.setItem("editorFontSize", 12);
+    editorFontSize = 12;
+  }
+
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/pastel_on_dark");
   editor.session.setMode("ace/mode/javascript");
   editor.session.setUseWorker(false);
+
   editor.setOptions({
     fontFamily: "Source Code Pro",
-    fontSize: "12pt"
+    fontSize: `${editorFontSize}pt`
   });
   editor.getSession().on('change', function () {
     codeChangeHandler()
@@ -47,7 +56,7 @@ async function onLoad() {
 
   outputFormatted.setOptions({
     fontFamily: "Source Code Pro",
-    fontSize: "12pt"
+    fontSize: `${editorFontSize}pt`
   });
 
   _code = editor;
@@ -160,7 +169,6 @@ async function callService(method) {
 }
 
 //Load a JS file and populate the code side
-
 async function loadTemplateCode(fname) {
   const parts = fname.split("_");
   _exampleName = parts;
@@ -331,4 +339,53 @@ function codeChangeHandler() {
   if (containsCode('post_', data)) {
     postButton.hidden = false;
   }
+}
+
+function reduceCodeFont() {
+  let size = localStorage.getItem("editorFontSize");
+  size--;
+  localStorage.setItem("editorFontSize", size);
+  var editor = ace.edit("editor");
+  editor.setOptions({
+    fontSize: `${size}pt`
+  });
+  var editor = ace.edit("response");
+  editor.setOptions({
+    fontSize: `${size}pt`
+  });
+}
+
+function increaseCodeFont() {
+  let size = localStorage.getItem("editorFontSize");
+  size++;
+  localStorage.setItem("editorFontSize", size);
+  var editor = ace.edit("editor");
+  editor.setOptions({
+    fontSize: `${size}pt`
+  });
+  var response = ace.edit("response");
+  response.setOptions({
+    fontSize: `${size}pt`
+  });
+}
+
+function showHideOutput() {
+  var x = document.getElementById("outputdiv");
+  var y = document.getElementById("editor");
+  let size = localStorage.getItem("editorFontSize");
+  if (x.style.display === "none") {
+    x.style.display = "flex";
+    // y.style = "flex";
+  } else {
+    x.style.display = "none";
+    // y.style = "flex";
+  }
+  var editor = ace.edit("editor");
+  editor.setOptions({
+    fontSize: `${size}pt`
+  });
+  var response = ace.edit("response");
+  response.setOptions({
+    fontSize: `${size}pt`
+  });
 }
