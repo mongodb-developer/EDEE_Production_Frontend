@@ -29,6 +29,11 @@
             <a class="menu" onclick="saveCode()">Save</a>
             <a class="menu" onclick="_saveFileName=null;saveCode()">Save As</a>
             <input style="display:none" onchange="loadLocalCode(this.files[0])" class="loadbutton" id="uploadCode" type="file" />
+            <div id="window-buttons">
+                <a class="menu" onclick="reduceCodeFont()">z↓</a>
+                <a class="menu" onclick="increaseCodeFont()">Z↑</a>
+                <a class="menu" onclick="showHideOutput()">🗖</a>
+            </div>
         </div>
         <div id="infobox" class="infobox"></div>
         <div class="flex-container">
@@ -71,6 +76,5 @@ function get_Hello(req, res) {
             <div id="response" class="response"> </div>
         </div>
     </div>
-    <div>
 </body>
 <html>
