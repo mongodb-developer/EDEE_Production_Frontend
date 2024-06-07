@@ -1,8 +1,11 @@
 var mongoClient = null;
 var collection, msg;
 
-/* This collection has indexes on property_type, room_type, and beds.
-   But, you can only use an index if the first field in the index is in
+/* In this collection, the field containing the total number of
+   beds in the property is indexed, while the number of bedrooms
+   is not.
+   
+   You can only use an index if the first field in the index is in
    the query */
 
 async function get_IndexDemo(req, res) {
