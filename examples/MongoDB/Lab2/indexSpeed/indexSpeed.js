@@ -28,7 +28,7 @@ async function get_IndexDemo(req, res) {
     rval += "Query " + JSON.stringify(query) + " with NO index took approx " + 
         nonIndexTime + " ms to find " + result.executionStats.nReturned + " records\n";
 
-    rval += "\nTimes do NOT include server roundtrip time." +
+    rval += "\nTimes do NOT include server roundtrip time.";
        
     res.header("Content-Type", "text/plain");
     res.send(rval);
