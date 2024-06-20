@@ -329,8 +329,11 @@ function codeChangeHandler() {
   data = _code.getValue();
   const getButton = document.getElementById("callServiceGET");
   const postButton = document.getElementById("callServicePOST");
+  const postDataBox = document.getElementById("postdata");
   getButton.hidden = true;
   postButton.hidden = true
+  postDataBox.contentEditable = false;
+  postDataBox.style.backgroundColor = "lightgrey";
 
   if (containsCode('get_', data)) {
     getButton.hidden = false;
@@ -338,6 +341,9 @@ function codeChangeHandler() {
 
   if (containsCode('post_', data)) {
     postButton.hidden = false;
+    postDataBox.contentEditable = true;
+    postDataBox.style.backgroundColor = "white";
+  
   }
 }
 
