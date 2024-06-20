@@ -91,10 +91,11 @@ html {
   display: block;
   padding: 0.4em;
   white-space: pre;
-  overflow: scroll;
+  overflow: hide;
   font-family: 'Source Code Pro', monospace;
   border-radius: 0.4em;
   font-size: small;
+
 }
 
 .infobox {
@@ -149,7 +150,7 @@ button:active {
   display: block;
   padding: 0.4em;
   white-space: pre;
-  overflow: scroll;
+  overflow: auto;
   font-family: 'Source Code Pro', monospace;
   border-radius: 0.4em;
   font-size: small;
@@ -264,7 +265,7 @@ menu.a:active {
   white-space: pre;
  
   border-radius: 0.3em;
-  overflow: scroll;
+  overflow: auto;
   font-family: 'Source Code Pro', monospace;
   font-size: small;
 }
@@ -276,7 +277,7 @@ menu.a:active {
   height: 90%;
   margin: 0.4em;
   white-space: pre-wrap;
-  overflow: scroll;
+  overflow: hide;
   border-radius: 0.3em;
   font-family: 'Source Code Pro', monospace;
   font-size: small;
