@@ -204,8 +204,8 @@ menu.a:active {
 .test {
   border-radius: 0.3em;
   width: 48vw;
-  bottom: 0.5vh;
-  margin: 0.2em;
+  height: 89.5vh;
+  margin-top: 0.2em;
   display: flex;
   border: 1px solid var(--springgreen);
   background: rgb(220, 220, 220);
