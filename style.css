@@ -6,7 +6,7 @@
 table,td,tr {
   border: 1px solid black;
   border-collapse: collapse;
-  padding: 1em;
+  padding: 0.4em;
   background-color: white;  
 }
 
@@ -43,8 +43,8 @@ a {
   padding: 0.2em;
   margin-bottom: 0.3em;
   border-radius: 0.3em;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
   text-decoration: none;
   color: black;
   background: white;
@@ -65,7 +65,8 @@ h2 {
 
 html {
   font-family: 'Euclid Circular A', monospace;
-  background: white;
+
+  background-color: #1C2D38;
   color: var(--slate);
   height: 100%;
 }
@@ -85,14 +86,14 @@ html {
   color: var(--springgreen);
   background: black;
   width: 100vw;
-  height: 85vh;
-  margin: 1em;
+  height: 88vh;
+  margin: 0.4em;
   display: block;
-  padding: 1em;
+  padding: 0.4em;
   white-space: pre;
   overflow: scroll;
   font-family: 'Source Code Pro', monospace;
-  border-radius: 1em;
+  border-radius: 0.4em;
   font-size: small;
 }
 
@@ -100,8 +101,8 @@ html {
   background: white;
   color: black;
   font-size: large;
-  margin: 1em;
-  padding: 1em;
+  margin: 0.4em;
+  padding: 0.4em;
   border: 2px solid red;
 }
 
@@ -115,10 +116,12 @@ html {
 }
 
 .menu:active {
+  
   background-color: var(--springgreen);
 }
 
 .loadbutton::file-selector-button {
+ 
   background-color: var(--forestgreen);
   color: white;
   padding: 14px 25px;
@@ -128,7 +131,7 @@ html {
   font-size: large;
   border-radius: 0.5em;
   margin: 0.5em;
-  padding: 0.5em 1em 0.5em 1em;
+  padding: 0.5em 0.4em 0.5em 0.4em;
   overflow: hidden;
 }
 
@@ -142,13 +145,13 @@ button:active {
   background: black;
   width: 48vw;
   height: 85vh;
-  margin: 1em;
+  margin: 0.4em;
   display: block;
-  padding: 1em;
+  padding: 0.4em;
   white-space: pre;
   overflow: scroll;
   font-family: 'Source Code Pro', monospace;
-  border-radius: 1em;
+  border-radius: 0.4em;
   font-size: small;
 }
 
@@ -162,20 +165,20 @@ button:active {
 .menu-container {
   display: flex;
   flex-direction: row;
-  margin-left: 1em;
+  margin-left: 0.4em;
+ 
 }
 
 .menu {
+  border: 1px solid var(--springgreen);
   background-color: var(--forestgreen);
-  color: white;
-  padding: 14px 25px;
+  color: white; 
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: large;
-  border-radius: 0.5em;
-  margin: 0.5em;
-  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 0.3em;
+  margin-right: 0.5em;
   overflow: hidden;
 }
 
@@ -186,33 +189,37 @@ menu.a:active {
 
 .button {
   font-size: large;
-  border-radius: 0.5em;
-  margin: 0.5em;
+  border-radius: 0.3em;
+  margin-right: 0.5em;
+  margin-top: 0.1em;
   background-color: white;
-  padding: 0.5em 1em 0.5em 1em;
+  padding: 0.1em 0.4em 0.1em 0.4em;
 }
 
 .label {
-  margin: 1em;
+  margin: 0.4em;
+  font-size: small;
 }
 
 .test {
-  border-radius: 1em;
+  border-radius: 0.3em;
   width: 48vw;
-  height: 88vh;
-  margin: 1vw;
+  bottom: 0.5vh;
+  margin: 0.2em;
   display: flex;
-  background: rgb(240, 240, 240);
+  border: 1px solid var(--springgreen);
+  background: rgb(220, 220, 220);
   flex-direction: column;
 }
 
 .url {
-  margin: 1em;
+  
   border: 1px solid black;
-  margin-left: 3em;
-  padding: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 0.1em;
   background: white;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   display: flex;
   flex-direction: row;
 }
@@ -224,46 +231,52 @@ menu.a:active {
 
 .path {
   display: inline-block;
+  font-size: small;
   font-family: 'Source Code Pro', monospace;
   background: white;
   color: black;
   margin: 0em;
   outline: 1px solid darkgray;
   padding: 0em;
+  line-break:anywhere;
+  overflow-wrap: break-word;
+
 }
 
 .staticpath {
-  margin-left: 1em;
+  margin-left: 0.4em;
   margin-right: 0em;
   outline: 0px solid transparent;
+  line-break: auto;
 }
 
 .postdata {
   border: 1px solid green;
   color: black;
   background: white;
-  height: 20%;
-  margin: 1em;
+  height: 30%;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 0.1em;
   display: block;
-  padding: 1em;
+ 
   white-space: pre;
-  margin-left: 3em;
-  border-radius: 0.5em;
+ 
+  border-radius: 0.3em;
   overflow: scroll;
   font-family: 'Source Code Pro', monospace;
   font-size: small;
 }
 
 .response {
-  padding: 1em;
+ 
   background: white;
   border: 1px solid black;
   height: 90%;
-  margin: 1em;
+  margin: 0.4em;
   white-space: pre-wrap;
-  margin-left: 3em;
   overflow: scroll;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   font-family: 'Source Code Pro', monospace;
   font-size: small;
 }
