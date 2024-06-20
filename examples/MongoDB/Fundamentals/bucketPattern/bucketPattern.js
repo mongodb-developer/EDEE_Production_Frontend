@@ -12,7 +12,8 @@ async function get_PropertyViews(req, res) {
 }
 
 // Every time this is called - add the ip of the caller to a list and
-// increment the number of view by one.
+// increment the number of views by one. When we hit the max bucket size,
+// create a new document.
 
 async function post_PropertyViews(req, res) {
   var sourceIp = req.sourceIp; // Source of the requests
@@ -20,17 +21,19 @@ async function post_PropertyViews(req, res) {
 
   propertyId = req.params[3];
 
-  //Change query as _id must be unique
-  var query = { propertyId: propertyId };
-  query.nViews = { $lt: 8 }; //Stop recording at 8 views
+  var query = { 
+    propertyId: propertyId,
+    nViews: { $lt: 8 } // Stop adding to the current bucket at 10 views
+  };
 
-  var updateOps = {};
-  updateOps["$set"] = { lastView: new Date() };
-  updateOps["$inc"] = { nViews: 1 };
-  updateOps["$push"] = { viewIp: sourceIp };
+  const updateOps = {
+    $set: { lastView: new Date() },
+    $inc: { nViews: 1 },
+    $push: { viewIp: sourceIp }
+  };
 
-  // Upsert will create a new document if a document matching the query doesn't
-  // exist in the collection.
+  // Upsert will create a new document if a document matching the query 
+  // doesn't exist in the collection.
   var options = { upsert: true };
 
   var rval = await viewCollection.updateOne(query, updateOps, options);
@@ -48,4 +51,5 @@ async function initWebService() {
   viewCollection = mongoClient
     .getDatabase("example")
     .getCollection("advertViews");
+    // await viewCollection.drop();
 }

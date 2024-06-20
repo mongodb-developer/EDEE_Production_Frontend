@@ -7,7 +7,6 @@ let __exsection = null;
 const serviceHostname = "https://edee.mongodb.com/v1/";
 
 async function onLoad() {
-
   // If we supplied an org name in the URL then write that to Localstorage
   const myURL = new URL(window.location);
 
@@ -19,8 +18,6 @@ async function onLoad() {
     __exsection = myURL.searchParams.get("s")
   }
 
-
-
   // If an org name is in LocalStorage then use it to set the examples page
   // This lets us have different examples based on the last link you used with org
 
@@ -28,14 +25,23 @@ async function onLoad() {
     document.getElementById("exampleLink").href = `examples/${localStorage.getItem("organization")}.html`
   }
 
+  let editorFontSize;
+
+  if (localStorage.getItem("editorFontSize")) {
+    editorFontSize = localStorage.getItem("editorFontSize");
+  } else {
+    localStorage.setItem("editorFontSize", 12);
+    editorFontSize = 12;
+  }
 
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/pastel_on_dark");
   editor.session.setMode("ace/mode/javascript");
   editor.session.setUseWorker(false);
+
   editor.setOptions({
     fontFamily: "Source Code Pro",
-    fontSize: "12pt"
+    fontSize: `${editorFontSize}pt`
   });
   editor.getSession().on('change', function () {
     codeChangeHandler()
@@ -50,7 +56,7 @@ async function onLoad() {
 
   outputFormatted.setOptions({
     fontFamily: "Source Code Pro",
-    fontSize: "12pt"
+    fontSize: `${editorFontSize}pt`
   });
 
   _code = editor;
@@ -75,8 +81,6 @@ async function onLoad() {
   }
   setTimeout(codeChangeHandler, 0);
 }
-
-
 
 function loadLocalCode(filePath) {
   let reader = new FileReader(); // no arguments
@@ -165,7 +169,6 @@ async function callService(method) {
 }
 
 //Load a JS file and populate the code side
-
 async function loadTemplateCode(fname) {
   const parts = fname.split("_");
   _exampleName = parts;
@@ -230,20 +233,42 @@ async function loadTemplateCode(fname) {
       if (!syntaxOKFlag) {
         console.error(`Server Error ocurred: ${syntaxErrorMessage}`);
       }
-
     } 
-
   }
-
-
 }
 
 // This can get more fancy over time if needs be
-async function showInfo(file) {
-  const url = "examples/" + _exampleName.join("/") + "/";
-  const response = await fetch(url + file);
+async function showInfo(fileName) {
+  const css = '<head><link rel="stylesheet" href="instructionsStyle.css"></link></head>';
+  const url = 'examples/' + _exampleName.join('/') + '/';
+  const windowHeight = 1024;
+  const windowWidth = 800;
+  
+  let fileBody = '';
+  const response = await fetch(url + fileName);
   if (response.status == 200) {
-    _output.setValue(r = await response.text(), -1)
+    fileBody = await response.text();
+  } else {
+    console.error(`Failed to load file from ${url + filename}. Return code ${response.status}`);
+    return;
+  }
+  const extension = fileName.split('.').pop();
+
+  switch(extension) {
+    case 'html':
+      const htmlHtml = css + fileBody;
+      var wnd = window.open('about:blank', fileName, `location=no,height=${windowHeight},width=${windowWidth},scrollbars=yes,status=no`);
+      wnd.document.write(htmlHtml);
+      break;
+    case 'md':
+      const converter = new showdown.Converter();
+      let mdHtml = converter.makeHtml(fileBody);
+      mdHtml = css + mdHtml;
+      var wnd = window.open('about:blank', fileName, `location=no,height=${windowHeight},width=${windowWidth},scrollbars=yes,status=no`);
+      wnd.document.write(mdHtml);
+      break;
+    default:
+      _output.setValue(r = fileBody, -1)
   }
 }
 
@@ -273,19 +298,100 @@ function saveCode() {
   }, 0);
 }
 
+function containsCode(code, codeBlock) {
+const lines = codeBlock.split('\n');
+let insideBlockComment = false;
+
+for (let line of lines) {
+    let trimmedLine = line;
+    if (trimmedLine.includes('/*')) {
+        insideBlockComment = true;
+    }
+    if (trimmedLine.includes('*/')) {
+        insideBlockComment = false;
+        continue;
+    }
+    if (insideBlockComment) {
+        continue;
+    }
+    const singleLineCommentIndex = trimmedLine.indexOf('//');
+    const codeIndex = trimmedLine.indexOf(code);
+    if (codeIndex !== -1 && (singleLineCommentIndex === -1 || 
+      codeIndex < singleLineCommentIndex)) {
+        return true;
+    }
+}
+return false;
+}
+
 function codeChangeHandler() {
 
   data = _code.getValue();
   const getButton = document.getElementById("callServiceGET");
   const postButton = document.getElementById("callServicePOST");
+  const postDataBox = document.getElementById("postdata");
   getButton.hidden = true;
   postButton.hidden = true
+  postDataBox.contentEditable = false;
+  postDataBox.style.backgroundColor = "lightgrey";
 
-  if (data.search(" get_") != -1) {
+  if (containsCode('get_', data)) {
     getButton.hidden = false;
+  }
 
-  }
-  if (data.search(" post_") != -1) {
+  if (containsCode('post_', data)) {
     postButton.hidden = false;
+    postDataBox.contentEditable = true;
+    postDataBox.style.backgroundColor = "white";
+  
   }
+}
+
+function reduceCodeFont() {
+  let size = localStorage.getItem("editorFontSize");
+  size--;
+  localStorage.setItem("editorFontSize", size);
+  var editor = ace.edit("editor");
+  editor.setOptions({
+    fontSize: `${size}pt`
+  });
+  var editor = ace.edit("response");
+  editor.setOptions({
+    fontSize: `${size}pt`
+  });
+}
+
+function increaseCodeFont() {
+  let size = localStorage.getItem("editorFontSize");
+  size++;
+  localStorage.setItem("editorFontSize", size);
+  var editor = ace.edit("editor");
+  editor.setOptions({
+    fontSize: `${size}pt`
+  });
+  var response = ace.edit("response");
+  response.setOptions({
+    fontSize: `${size}pt`
+  });
+}
+
+function showHideOutput() {
+  var x = document.getElementById("outputdiv");
+  var y = document.getElementById("editor");
+  let size = localStorage.getItem("editorFontSize");
+  if (x.style.display === "none") {
+    x.style.display = "flex";
+    // y.style = "flex";
+  } else {
+    x.style.display = "none";
+    // y.style = "flex";
+  }
+  var editor = ace.edit("editor");
+  editor.setOptions({
+    fontSize: `${size}pt`
+  });
+  var response = ace.edit("response");
+  response.setOptions({
+    fontSize: `${size}pt`
+  });
 }

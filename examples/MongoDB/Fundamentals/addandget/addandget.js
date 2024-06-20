@@ -1,28 +1,23 @@
-
-
-// This takes a "Booking" from request.body (JSON Text)
-// and stores it in MongoDB after converting to the right
-// data types.
-
+/* 
+This takes a "Booking" from request.body (JSON Text)
+and stores it in MongoDB after converting to the right
+data types.
+*/
 async function post_Booking(request, response) {
-  var booking = JSON.parse(request.body); // In a full solution you need to validate the input.
-
- // in MongoDB store the Primary Key  in the  _id field
-  booking._id = booking.bookingId; 
+  var booking = JSON.parse(request.body); 
   
   // Convert Strings to dates or other types as needed
-  var bookingDates = booking.bookingDates // Document
+  var bookingDates = booking.bookingDates;
   bookingDates.checkIn = new Date(bookingDates.checkIn);
   bookingDates.checkOut = new Date(bookingDates.checkOut);
 
-  //Add to MongoDB
+  // Add to MongoDB
   var rval = await bookingsCollection.insertOne(booking);
 
-  response.status(201); //HTTP response
+  response.status(201);
   response.send(rval);
 }
-
-// Read the Booking ID form the URL 
+ 
 async function get_Booking(request, response) {
   var query ={};
 
@@ -32,17 +27,13 @@ async function get_Booking(request, response) {
   }
 
   console.log(query);
-  var cursor = bookingsCollection.find(query); //MongoCursor
-
-  var bookings = await cursor.toArray();  //Fetch all from Cursor
+  var cursor = bookingsCollection.find(query); // MongoCursor
+  var bookings = await cursor.toArray();  // Fetch all documents from cursor
 
   response.status(200);
   response.send(bookings);
 }
 
-// This is only called when code has changed.
-// Get Username and Password from environment then create the MongoDB Client
-// Also populate the booking collection objects
 var mongoClient = null; 
 var bookingsCollection = null; 
 
@@ -51,10 +42,9 @@ async function initWebService() {
   var passWord = await system.getenv("MONGO_PASSWORD", true);
 
   mongoClient = new MongoClient(
-    "mongodb+srv://" + userName + ":" + passWord + "@learn.mongodb.net",
-  );
+    "mongodb+srv://" + userName + ":" + passWord + "@learn.mongodb.net");
   bookingsCollection = mongoClient
     .getDatabase("ayrbnb")
     .getCollection("bookings");
-  // await bookingsCollection.drop() // Use if you want to responseet
+  // await bookingsCollection.drop() // Use if you want to reset
 }
