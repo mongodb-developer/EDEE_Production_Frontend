@@ -87,7 +87,7 @@ html {
   background: black;
   width: 100vw;
   height: 88vh;
-  margin: 0.4em;
+  margin: 0.2em 0.6em 0.2em 0.2em;
   display: block;
   padding: 0.4em;
   white-space: pre;
