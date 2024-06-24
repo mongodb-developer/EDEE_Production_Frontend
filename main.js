@@ -10,6 +10,7 @@ async function onLoad() {
   // If we supplied an org name in the URL then write that to Localstorage
   const myURL = new URL(window.location);
 
+
   if (myURL.searchParams && myURL.searchParams.get("org")) {
     localStorage.setItem("organization", myURL.searchParams.get("org"));
   }
@@ -18,6 +19,28 @@ async function onLoad() {
     __exsection = myURL.searchParams.get("s")
   }
 
+  //If we dont have a valid org at this point then don't let them in.
+  let orgName = localStorage.getItem("organization") ;
+  let hasOrg = true;
+  if(!orgName) {
+    hasOrg = false;
+  }
+
+
+  let response = await fetch(`examples/${orgName}.html`);
+  console.log(response.status)
+  if(response.status != 200) {
+    hasOrg = false;
+
+  }
+ while(hasOrg == false) {
+    orgName = await modal.prompt( `Please enter a valid Organization code, this is normally supplied in the URL`);
+    response = await fetch(`examples/${orgName}.html`);
+    if(response.status == 200) {
+      hasOrg = true;
+      localStorage.setItem("organization",orgName);
+    }
+}
   // If an org name is in LocalStorage then use it to set the examples page
   // This lets us have different examples based on the last link you used with org
 
