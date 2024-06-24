@@ -23,7 +23,6 @@ async function onLoad() {
   let orgName = localStorage.getItem("organization") ;
   let hasOrg = true;
   if(!orgName) {
-    alert("NO ORG")
     hasOrg = false;
   }
 
@@ -31,7 +30,6 @@ async function onLoad() {
   let response = await fetch(`examples/${orgName}.html`);
   console.log(response.status)
   if(response.status != 200) {
-    alert("Invalid ORG")
     hasOrg = false;
 
   }
