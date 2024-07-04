@@ -155,11 +155,12 @@ async function callService(method) {
     let renderOut = "";
 
     if (conso1e.contents) {
-      renderOut += "-------------------------- Console --------------------------\n";
+      renderOut += "-------------------------- Console Log ----------------------\n";
       renderOut += conso1e.contents;
       renderOut += "\n-------------------------------------------------------------\n\n";
     }
-    renderOut += `\n"ResponseTime": ${timeToShow}ms\n`
+    /* Not needed now we have function timing with system.timeStart()*/
+    /* renderOut += `\n"ResponseTime": ${timeToShow}ms\n`*/
 
 
     renderOut += `"StatusCode": ${response._status}\n`;
