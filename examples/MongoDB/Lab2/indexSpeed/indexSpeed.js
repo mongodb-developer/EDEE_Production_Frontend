@@ -1,38 +1,34 @@
 var mongoClient = null;
 var collection, msg;
 
-/* In this collection, the field containing the total number of
-   beds in the property is indexed, while the number of bedrooms
-   is not.
-   
-   You can only use an index if the first field in the index is in
+/* This collection has indexes on property_type, room_type, and beds.
+   But, you can only use an index if the first field in the index is in
    the query */
+
 
 async function get_IndexDemo(req, res) {
 
+    var query = { beds: 11 };
+    var projection = { _id: 1 };
     var rval = msg;
 
-    //Get execution time and number of results with index
-    var query = { beds: 11 };
-    result = await collection.find(query).explain('executionStats');
-    var indexTime = result.executionStats.executionTimeMillis;
-    indexTime = (indexTime === 0) ? 1 : indexTime;
-    rval += "Query " + JSON.stringify(query) +  " with index took " + 
-        indexTime + " ms to find " + result.executionStats.nReturned + " records\n";
-    
-    //Get execution time and number of results without index
-    query = { bedrooms: 8 };
-    result = await collection.find(query).explain('executionStats');
-    var nonIndexTime = result.executionStats.executionTimeMillis
-    nonIndexTime = (nonIndexTime === 0) ? 1 : nonIndexTime;
-    rval += "Query " + JSON.stringify(query) + " with NO index took approx " + 
-        nonIndexTime + " ms to find " + result.executionStats.nReturned + " records\n";
+    result = await collection.countDocuments(query, true);
 
-    rval += "\nTimes do NOT include server roundtrip time.";
-       
+    rval += "Query " + JSON.stringify(query) + " with index took approx " +
+        result.ms + " ms to find " + result.message + " records\n";
+
+    query = { bedrooms: 8 };
+
+    result = await collection.countDocuments(query, true);
+
+    rval += "Query " + JSON.stringify(query) + " with NO index took approx " +
+        result.ms + " ms to find " + result.message + " records\n";
+
     res.header("Content-Type", "text/plain");
+    //res.header("Server-ping-time", mongoClient.getPingTime() + "ms (approx.)");
+
     res.send(rval);
-   
+
 }
 
 async function initWebService() {

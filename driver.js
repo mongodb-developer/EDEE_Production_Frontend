@@ -774,7 +774,7 @@ class MongoCollection {
    * @returns number of matching documents
    */
 
-  async countDocuments(query) {
+  async countDocuments(query, extended) {
     if (!(await this.mongoClient.connect()))
       throw new Error(this.mongoClient.lastError);
     if(!query) { query = {}; }
@@ -784,7 +784,12 @@ class MongoCollection {
       this.collName,
       query
     );
-    return rval.result;
+    //The if statement handles callers looking for the extended results (including execution time)
+    if(extended){
+      return rval;
+    }else{
+      return rval.message;
+    }
   }
 }
 
