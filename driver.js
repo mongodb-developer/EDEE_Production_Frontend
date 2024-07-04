@@ -27,7 +27,7 @@ class MongoClient {
     return MongoClient._serverLatency;
   }
 
-  static _serverLatency = -1;
+  static _serverLatency = 0;
   static _nServerCalls = 0;
   /**
    * Constructor - takes a MongoDB URI
@@ -143,7 +143,9 @@ q
         site: __hostingsite,
         section: __exsection
       }); // Ignore promise
-      if (MongoClient._serverLatency == -1) {
+
+      //No longer care about latency to EDEE Server
+     /*if (MongoClient._serverLatency == -1) {
         const startTime = Date.now();
         for (let x = 0; x < 3; x++) {
           await this.user.functions.ping();
@@ -151,10 +153,11 @@ q
         const endTime = Date.now();
 
         MongoClient._serverLatency = Math.ceil((endTime - startTime) / 3);
+
         console.log(
           "Server Latency for Emulator is " + MongoClient._serverLatency + "ms"
         );
-      }
+      }*/
 
       this.connected = true;
       return true;
@@ -774,7 +777,7 @@ class MongoCollection {
    * @returns number of matching documents
    */
 
-  async countDocuments(query, extended) {
+  async countDocuments(query) {
     if (!(await this.mongoClient.connect()))
       throw new Error(this.mongoClient.lastError);
     if(!query) { query = {}; }
@@ -784,12 +787,14 @@ class MongoCollection {
       this.collName,
       query
     );
-    //The if statement handles callers looking for the extended results (including execution time)
-    if(extended){
-      return rval;
-    }else{
-      return rval.message;
+    if(rval.ms != undefined) {
+      __functionTimer += rval.ms;
     }
+    if (rval.error) {
+      throw new Error("Database Error: " + rval.error);
+    }
+    return rval.result;
+    
   }
 }
 
