@@ -150,7 +150,7 @@ async function callService(method) {
     const endTime = Date.now();
 
 
-    let timeToShow = Math.floor((endTime - startTime) - (MongoClient._serverLatency * MongoClient._nServerCalls));
+    let timeToShow = Math.floor((endTime - startTime)); //- (MongoClient._serverLatency * MongoClient._nServerCalls));
     if (timeToShow < 1) timeToShow = 1;
 
     let renderOut = "";
