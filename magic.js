@@ -1,6 +1,6 @@
 let syntaxOKFlag, syntaxErrorMessage;
 let oldCode = null;
-
+let __functionTimer = 0;
 async function callVirtualEndpoint(url, verb) {
   const res = new SimResponse();
   let source =  _code.getValue();
@@ -135,6 +135,14 @@ const system = {
   clearenv: function (name) {
     localStorage.removeItem(name);
   },
+  timerStart :  function() {
+    __functionTimer = 0;
+  },
+  timerEnd : function() {
+    const r = __functionTimer;
+    return r;
+  }
+
 };
 
 const conso1e = {

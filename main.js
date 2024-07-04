@@ -28,7 +28,6 @@ async function onLoad() {
 
 
   let response = await fetch(`examples/${orgName}.html`);
-  console.log(response.status)
   if(response.status != 200) {
     hasOrg = false;
 

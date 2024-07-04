@@ -12,20 +12,23 @@ async function get_IndexDemo(req, res) {
     var projection = { _id: 1 };
     var rval = msg;
 
-    result = await collection.countDocuments(query, true);
+    system.timerStart()
+    nDocs = await collection.countDocuments(query);
+    var taken = system.timerEnd();
 
     rval += "Query " + JSON.stringify(query) + " with index took approx " +
-        result.ms + " ms to find " + result.message + " records\n";
+        taken + " ms to find " + nDocs + " records\n";
 
     query = { bedrooms: 8 };
 
-    result = await collection.countDocuments(query, true);
+    system.timerStart()
+    nDocs = await collection.countDocuments(query);
+    taken = system.timerEnd();
 
     rval += "Query " + JSON.stringify(query) + " with NO index took approx " +
-        result.ms + " ms to find " + result.message + " records\n";
+        taken + " ms to find " + nDocs + " records\n";
 
     res.header("Content-Type", "text/plain");
-    //res.header("Server-ping-time", mongoClient.getPingTime() + "ms (approx.)");
 
     res.send(rval);
 
@@ -41,6 +44,6 @@ async function initWebService() {
     collection = mongoClient.getDatabase("sample_airbnb")
         .getCollection("largeCollection");
     await mongoClient.ping();
-    
+
     msg = "Check Instructions for more info.\n\n";
 }
