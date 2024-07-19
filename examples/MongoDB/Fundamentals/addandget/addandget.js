@@ -11,6 +11,7 @@ async function post_Booking(request, response) {
   bookingDates.checkIn = new Date(bookingDates.checkIn);
   bookingDates.checkOut = new Date(bookingDates.checkOut);
 
+  console.log(`bookingDates: ${JSON.stringify(bookingDates)}`);
   // Add to MongoDB
   var rval = await bookingsCollection.insertOne(booking);
 
@@ -26,7 +27,7 @@ async function get_Booking(request, response) {
     query._id = request.query.get("id")
   }
 
-  console.log(query);
+  console.log(`Query: ${JSON.stringify(query)}`);
   var cursor = bookingsCollection.find(query); // MongoCursor
   var bookings = await cursor.toArray();  // Fetch all documents from cursor
 

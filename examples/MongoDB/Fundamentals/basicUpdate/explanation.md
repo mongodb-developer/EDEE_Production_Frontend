@@ -1,12 +1,12 @@
 # Updating existing data
 
-The POST method in this example is used to record the views for a particular property. Each time we post, the property's MongoDB document is updated to:
+The **POST** method in this example is used to record the views for a particular property. Each time we **POST**, the property's MongoDB document is updated to:
 
 - Push the viewer's IP address onto the `viewIp` array
 - Increment the `nViews` count
 - Set `lastView` to the current time/date
 
-After a few POSTs, the property's document should look something like this:
+After a few **POST**s, the property's document should look something like this:
 
 ```json
 {
@@ -25,7 +25,7 @@ After a few POSTs, the property's document should look something like this:
 }
 ```
 
-The GET method fetches the property's document.
+The **GET** method fetches the property's document.
 
 Note that `initWebService` resets the document whenever the code is updated.
 
@@ -33,7 +33,7 @@ Note that `initWebService` resets the document whenever the code is updated.
 
 ## Challenge
 
-Modify the code so that a POST will push objects rather than simple strings onto the `viewIp` array. Each object will contain the IP address and the time of the view. The resulting document should look like this:
+Modify the code so that a **POST** will push objects rather than simple strings onto the `viewIp` array. Each object will contain the IP address and the time of the view. The resulting document should look like this:
 
 ```json
 {
@@ -57,7 +57,7 @@ Modify the code so that a POST will push objects rather than simple strings onto
 }
 ```
 
-After POSTing a few views, click GET to complete the challenge.
+After POSTing a few views, click **GET** to complete the challenge.
 
 ---
 

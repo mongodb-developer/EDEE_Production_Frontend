@@ -4,7 +4,7 @@ The last exercise wasn't 100% satisfactory. We avoided unbounded arrays by cappi
 
 In this example, we remedy that by implementing the bucket pattern – where each document contains a bucket (array) of 8 views. We still cap the array at 8 elements, but when a bucket is full, we create a new document. It's almost trivial to implement the change, we just include the option `{ upsert: true }` in the update.
 
-After POSTing 12 views, we'll now see 2 documents when we GET all documents for the property:
+After **POST**ing 12 views, we'll now see 2 documents when we GET all documents for the property:
 
 ```json
 [
@@ -38,7 +38,7 @@ After POSTing 12 views, we'll now see 2 documents when we GET all documents for 
   }
 ]
 ```
-The GET method fetches the property's document.
+The **GET** method fetches the property's document.
 
 Note that in this example, `initWebService` **doesn't reset** the collection whenever the code is updated. Also note that we didn't need to create the initial document in `initWebService` because the upsert handles that for us.
 
@@ -46,9 +46,9 @@ Note that in this example, `initWebService` **doesn't reset** the collection whe
 
 ## Challenge
 
-After POSTing the 12 views, modify the code to update the limit to 10 views.
+After **POST**ing the 12 views, modify the code to update the limit to 10 views.
 
-Now POST 3 more views and click GET to complete the challenge – you'll see that the first bucket has been enlarged and now contains 10 views, while the second contains 5.
+Now **POST** 3 more views and click **GET** to complete the challenge – you'll see that the first bucket has been enlarged and now contains 10 views, while the second contains 5.
 
 ---
 
