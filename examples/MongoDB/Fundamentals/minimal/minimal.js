@@ -4,6 +4,8 @@ The first time you connect to MongoDB, you can give any unique username and a
 password of your choice - both must be at least 6 characters long. When
 rerunning this example, or any others, you'll not be asked for these
 credentials again (your choices will be remembered).
+
+Click on "Explanation" to see the challenge
 */
 async function initWebService() {
   var userName = await system.getenv("MONGO_USERNAME");

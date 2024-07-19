@@ -1,6 +1,8 @@
 var mongoClient = null;
 var sequenceCollection;
 
+// Click on "Explanation" to see the challenge
+
 async function post_Sequence(req, res) {
   sequenceName = req.query.get("id");
   if (sequenceName == null || sequenceName == "") {
@@ -9,13 +11,18 @@ async function post_Sequence(req, res) {
 
   var query = { _id: sequenceName };
   var updateOps = { $inc: { count: 1 } };
+  
   // Can add projections, sort, and options too
   var options = { upsert: true, returnNewDocument: true };
 
-  // Use findOneAndUpdate to Update and Get the before or after record
-  // If you did update() then find() you might get a race condition and
-  // See value after another user has changed it again
+  // Use `findOneAndUpdate` to update and fetch the before or after record.
+  // If you did `update()` then `find()` you might get a race condition where
+  // another thread increments the counter again before you read back the new
+  // value.
 
+  console.log(`Query: ${JSON.stringify(query)}
+Update: ${JSON.stringify(updateOps)} 
+Options: ${JSON.stringify(options)}`);
   var rval = await sequenceCollection.findOneAndUpdate(
     query,
     updateOps,

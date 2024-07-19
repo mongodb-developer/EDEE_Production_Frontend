@@ -2,7 +2,7 @@
 
 Clicking **POST** will insert the document from **POST Data** into MongoDB. 
 
-Clicking **GET** will read back that same document. Note that the GET finds the document because the `id` query parameter in the endpoint URL matches the `_id` from the posted document.
+Clicking **GET** will read back that same document. Note that the **GET** finds the document because the `id` query parameter in the endpoint URL matches the `_id` from the posted document.
 
 ---
 

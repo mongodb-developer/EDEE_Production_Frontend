@@ -1,42 +1,42 @@
 [
   {
-    "name": "New York",
-    "average_temperatures": [0, 1, 5, 11, 16, 21, 24, 23, 19, 14, 8, 3]
+    "_id": "New York",
+    "monthly_temperatures": [0, 1, 5, 11, 16, 21, 24, 23, 19, 14, 8, 3]
   },
   {
-    "name": "Los Angeles",
-    "average_temperatures": [14, 15, 15, 17, 18, 20, 22, 22, 21, 19, 16, 14]
+    "_id": "Los Angeles",
+    "monthly_temperatures": [14, 15, 15, 17, 18, 20, 22, 22, 21, 19, 16, 14]
   },
   {
-    "name": "London",
-    "average_temperatures": [4, 5, 7, 9, 13, 16, 18, 18, 15, 11, 7, 5]
+    "_id": "London",
+    "monthly_temperatures": [4, 5, 7, 9, 13, 16, 18, 18, 15, 11, 7, 5]
   },
   {
-    "name": "Paris",
-    "average_temperatures": [5, 6, 9, 11, 15, 18, 20, 20, 17, 13, 9, 6]
+    "_id": "Paris",
+    "monthly_temperatures": [5, 6, 9, 11, 15, 18, 20, 20, 17, 13, 9, 6]
   },
   {
-    "name": "Moscow",
-    "average_temperatures": [-6, -6, 0, 6, 13, 17, 19, 17, 12, 6, 0, -3]
+    "_id": "Moscow",
+    "monthly_temperatures": [-6, -6, 0, 6, 13, 17, 19, 17, 12, 6, 0, -3]
   },
   {
-    "name": "Tokyo",
-    "average_temperatures": [5, 6, 9, 14, 19, 22, 25, 27, 23, 18, 12, 7]
+    "_id": "Tokyo",
+    "monthly_temperatures": [5, 6, 9, 14, 19, 22, 25, 27, 23, 18, 12, 7]
   },
   {
-    "name": "Sydney",
-    "average_temperatures": [23, 23, 21, 19, 16, 13, 12, 13, 15, 18, 20, 22]
+    "_id": "Sydney",
+    "monthly_temperatures": [23, 23, 21, 19, 16, 13, 12, 13, 15, 18, 20, 22]
   },
   {
-    "name": "Cape Town",
-    "average_temperatures": [20, 20, 19, 16, 14, 12, 11, 12, 14, 16, 18, 20]
+    "_id": "Cape Town",
+    "monthly_temperatures": [20, 20, 19, 16, 14, 12, 11, 12, 14, 16, 18, 20]
   },
   {
-    "name": "Cairo",
-    "average_temperatures": [14, 15, 17, 20, 23, 26, 28, 28, 26, 23, 20, 16]
+    "_id": "Cairo",
+    "monthly_temperatures": [14, 15, 17, 20, 23, 26, 28, 28, 26, 23, 20, 16]
   },
   {
-    "name": "São Paulo",
-    "average_temperatures": [22, 22, 21, 19, 16, 14, 14, 15, 17, 19, 20, 22]
+    "_id": "São Paulo",
+    "monthly_temperatures": [22, 22, 21, 19, 16, 14, 14, 15, 17, 19, 20, 22]
   }
 ]

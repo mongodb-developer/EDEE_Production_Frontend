@@ -63,7 +63,8 @@ async function onLoad() {
 
   editor.setOptions({
     fontFamily: "Source Code Pro",
-    fontSize: `${editorFontSize}pt`
+    fontSize: `${editorFontSize}pt`,
+    tabSize: 2
   });
   editor.getSession().on('change', function () {
     codeChangeHandler()

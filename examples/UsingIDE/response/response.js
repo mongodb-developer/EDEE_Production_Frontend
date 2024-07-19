@@ -4,6 +4,8 @@ Serverless web service hosting.
 get_XXXX or post_XXXX define GET and POST endpoints.
 
 Both get passed a Request and a Response Object.
+
+Click on "Explanation" to see the challenge
 */
 
 function get_Hello(req, res) {

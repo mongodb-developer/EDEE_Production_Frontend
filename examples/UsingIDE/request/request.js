@@ -1,5 +1,7 @@
 // POST endpoint is passed the POST data in `body`
 
+// Click on "Explanation" to see the challenge
+
 function post_Echo(req, res) {
   // Request `body` (POST data) is a string.
   var bodyString = req.body;

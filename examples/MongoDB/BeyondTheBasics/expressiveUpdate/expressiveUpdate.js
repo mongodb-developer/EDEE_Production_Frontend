@@ -1,12 +1,14 @@
 var mongoClient = null;
 var temperatureCollection;
 
-// User POSTs to Cities to load data, GET Cities to see data.
+// User POSTs to Cities to load data, GET Cities to see data - typical
+// monthly temperatures for each city.
 // Then Change URL and POST to AddSummary to update all the records 
 // expressively.
-// Then GET Cities to see the changes.
+// GET Cities again to see the changes.
 
-//Generate example data
+// Click on "Explanation" to see the challenge
+
 async function post_Cities(req, res) {
   await temperatureCollection.drop();
   docs = JSON.parse(req.body);
@@ -25,11 +27,14 @@ async function get_Cities(req, res) {
 async function post_AddSummary(req, res) {
   query = {}; // Match everything
   summaryFields = {};
-  summaryFields.mean = { $avg: "$average_temperatures" };
-  summaryFields.max = { $max: "$average_temperatures" };
-  summaryFields.length = { $size: "$average_temperatures" };
-  expressiveUpdate = [{ $set: summaryFields }]; // An Array shows it's expressive
+  summaryFields.mean = { $avg: "$monthly_temperatures" };
+  summaryFields.max = { $max: "$monthly_temperatures" };
+  summaryFields.months = { $size: "$monthly_temperatures" };
 
+  expressiveUpdate = [{ $set: {summary: summaryFields }}]; // An Array shows 
+                                                           // it's expressive
+  console.log(`Query: ${JSON.stringify(query)}
+Update: ${JSON.stringify(expressiveUpdate)}`);
   rval = await temperatureCollection.updateMany(query, expressiveUpdate);
   res.status(200);
   res.send(rval);

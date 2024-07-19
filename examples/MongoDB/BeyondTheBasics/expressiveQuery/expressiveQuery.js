@@ -1,6 +1,8 @@
 var mongoClient = null;
 var listingsCollection;
 
+// Click on "Explanation" to see the challenge
+
 async function get_Query(req, res) {
   var query = {};
   var projection = {};
@@ -8,13 +10,14 @@ async function get_Query(req, res) {
   // Find 10 properties where price for 4 guests < $100
 
   totalPrice = { $add: ["$price", "$cleaning_fee"] };
-  query.$expr = { $lt: [totalPrice, 100] };
-  query.guests_included = { $gte: 4 }; // number allowed before extra charges
+  query.$expr = {$lt: [totalPrice, 100]};
+  query.guests_included = { $gte: 4 }; // Number allowed before extra charges
 
   projection = {
     name: 1,
     "address.country": 1,
     "address.market": 1,
+    bedrooms: 1,
     beds: 1,
     accommodates: 1,
     price: 1,
@@ -24,8 +27,9 @@ async function get_Query(req, res) {
 
   projection.totalPrice = totalPrice;
 
+  console.log(`Query: ${JSON.stringify(query)}
+Projection: ${JSON.stringify(projection)}`); 
   var cursor = listingsCollection.find(query, projection).limit(10);
-
   var properties = await cursor.toArray();
   res.status(200);
   res.send(properties);
