@@ -1,6 +1,8 @@
 var mongoClient = null;
 var listingsCollection;
 
+// Click on "Explanation" to see the challenge
+
 async function get_Query(req, res) {
   var query = {};
   var projection = {};

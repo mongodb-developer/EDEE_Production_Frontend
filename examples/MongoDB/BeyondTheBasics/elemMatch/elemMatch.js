@@ -1,6 +1,8 @@
 var mongoClient = null;
 var arrayExample;
 
+// Click on "Explanation" to see the challenge
+
 async function get_Data(req, res) {
   var query = {};
 

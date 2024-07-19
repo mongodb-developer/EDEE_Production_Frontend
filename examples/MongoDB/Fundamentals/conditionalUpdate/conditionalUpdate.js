@@ -1,6 +1,8 @@
 var mongoClient = null;
 var viewCollection;
 
+// Click on "Explanation" to see the challenge
+
 async function get_PropertyViews(req, res) {
   propertyId = req.params[3];
   query = { _id: propertyId };

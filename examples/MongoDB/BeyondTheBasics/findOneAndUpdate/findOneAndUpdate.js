@@ -1,6 +1,8 @@
 var mongoClient = null;
 var sequenceCollection;
 
+// Click on "Explanation" to see the challenge
+
 async function post_Sequence(req, res) {
   sequenceName = req.query.get("id");
   if (sequenceName == null || sequenceName == "") {

@@ -3,6 +3,9 @@ var listingsCollection;
 /* 
 Challenge: Can you modify this to find the cheapest house 
 in Canada with a pool (under amenities)? What suburb is it in?
+
+Click on "Explanation" to see the challenge details
+
 */
 async function get_PropertyDetails(req, res) {
   // 5 Bedrooms or more in Turkey

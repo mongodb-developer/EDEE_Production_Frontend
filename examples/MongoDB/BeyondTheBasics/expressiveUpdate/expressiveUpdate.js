@@ -7,6 +7,8 @@ var temperatureCollection;
 // expressively.
 // GET Cities again to see the changes.
 
+// Click on "Explanation" to see the challenge
+
 async function post_Cities(req, res) {
   await temperatureCollection.drop();
   docs = JSON.parse(req.body);

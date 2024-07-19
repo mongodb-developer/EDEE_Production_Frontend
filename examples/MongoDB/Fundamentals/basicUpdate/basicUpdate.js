@@ -5,6 +5,8 @@ var viewCollection;
 When we get a POST, we update the record for that property
 to increment the number of views, log the last viewed date and 
 add the IP address of the caller to an array. 
+
+Click on "Explanation" to see the challenge
 */
 
 async function post_PropertyViews(req, res) {

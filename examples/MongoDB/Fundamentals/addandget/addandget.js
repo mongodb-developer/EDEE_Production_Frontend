@@ -2,6 +2,8 @@
 This takes a "Booking" from request.body (JSON Text)
 and stores it in MongoDB after converting to the right
 data types.
+
+Click on "Explanation" to see the challenge
 */
 async function post_Booking(request, response) {
   var booking = JSON.parse(request.body); 

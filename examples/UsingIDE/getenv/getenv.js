@@ -1,5 +1,7 @@
 var some_value = 0;
 
+// Click on "Explanation" to see the challenge
+
 async function initWebService() {
   // system.clearenv("SOME_VAR");
 
