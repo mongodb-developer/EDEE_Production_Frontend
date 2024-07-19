@@ -16,9 +16,9 @@ async function get_PropertyDetails(req, res) {
   // 1 for an ascending sort, -1 for descending
   var sortOrder = { price: -1 };
 
-  console.log(`    Query: ${JSON.stringify(query)}
-    Projection: ${JSON.stringify(projection)}
-    Sort: ${JSON.stringify(sortOrder)}`);
+  console.log(`Query: ${JSON.stringify(query)}
+Projection: ${JSON.stringify(projection)}
+Sort: ${JSON.stringify(sortOrder)}`);
 
   var cursor = listingsCollection
     .find(query, projection)
