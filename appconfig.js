@@ -1,2 +1,2 @@
-__hostingsite = "johnlocal"
-__atlasappid = "edee_development_johnp-wznndsc"
+__hostingsite = "gcr_edee_dev"
+__atlasappid = "edee_production-szmvu"
