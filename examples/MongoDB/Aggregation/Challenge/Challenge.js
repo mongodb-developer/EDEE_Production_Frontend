@@ -30,7 +30,7 @@ async function get_Dashboard(req, res) {
     // sortByTotalBeds,
     // tidyUp,
   ];
-
+  console.log(`Pipeline: ${JSON.stringify(pipeline)}`);
   var cursor = listingsCollection.aggregate(pipeline);
   var results = await cursor.toArray();
   res.status(200);

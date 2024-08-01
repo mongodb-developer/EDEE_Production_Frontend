@@ -21,6 +21,8 @@ async function post_AtlasSearch(req, res) {
 
   try {
     // Create the new Search index - will fail on read-only data
+    console.log(`Index Definition: ${JSON.stringify(indexDefinition)}
+Projection: ${JSON.stringify(projection)}`);
     rval.index = await listingsCollection.createSearchIndex(indexName,
         indexDefinition);
   } catch (e) {

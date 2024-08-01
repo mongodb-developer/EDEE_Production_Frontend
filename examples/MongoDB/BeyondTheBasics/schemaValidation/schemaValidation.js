@@ -1,5 +1,6 @@
 var mongoClient = null;
 var sales;
+var validatorSpec;
 
 // Try editing both the schema definition or the data and see how
 // writes fail if they don't match. 
@@ -18,8 +19,7 @@ const jsonSchema = {
   properties: properties,
 };
 
-
-//Post the data -  If it doesn't match the description it will fail.
+// Post the data -  If it doesn't match the description it will fail.
 async function post_Data(req, res) {
   doc = JSON.parse(req.body);
 
@@ -27,7 +27,8 @@ async function post_Data(req, res) {
   if (doc.date) {
     doc.date = new Date(doc.date);
   } // Explicity cast to Date type
-
+  console.log(`Doc: ${JSON.stringify(doc)}
+Validation: ${JSON.stringify(validatorSpec)}`);
   rval = await sales.insertOne(doc);
   res.status(201);
   res.send(rval);

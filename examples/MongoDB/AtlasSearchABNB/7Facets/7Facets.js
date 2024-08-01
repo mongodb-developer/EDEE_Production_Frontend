@@ -27,7 +27,7 @@ async function get_AmenitiesByCountry(req, res) {
         },
       },
     };
-
+  console.log(`Search Operation: ${JSON.stringify(searchOperation)}`);
   var searchResultsCursor = collection.aggregate([ searchOperation ]);
   var searchResult = await searchResultsCursor.toArray();
   res.status(201);

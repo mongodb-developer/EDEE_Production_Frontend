@@ -10,7 +10,7 @@ This service is a task queue.
 You can add a new task by POSTing to the "Task" endpoint, and list them by
 sending a GET to the same URL.
 
-You need to add `post_Assign?user=Name` - which will find a single task and
+You need to add `Assign?user=Name` - which will find a single task and
 assign it to that user, changing the status to "STATUS_ASSIGNED".
 
 A task can be assigned if it is "New" or has been "Assigned" for more than 1
@@ -48,7 +48,9 @@ async function post_Assign(req, res) {
   // abandoned)
 
   options = { returnNewDocument: true, sort: { status: -1 } };
-
+  console.log(`Query: ${JSON.stringify(assignableTasks)}
+Update: ${JSON.stringify(assignTask)}
+Options: ${JSON.stringify(options)}`);
   assignedTask = await taskCollection.findOneAndUpdate(
     assignableTasks,
     assignTask,
@@ -60,6 +62,7 @@ async function post_Assign(req, res) {
 
 async function get_Task(req, res) {
   query = {};
+  console.log(`Query: ${JSON.stringify(query)}`);
   var data = await taskCollection.find(query).sort({ status: 1 }).toArray();
   res.status(202);
   res.send({ tasks: data });
@@ -75,6 +78,7 @@ async function post_Task(req, res) {
     description,
   };
 
+  console.log(`Task: ${JSON.stringify(newTask)}`);
   rval = await taskCollection.insertOne(newTask);
   res.status(202);
   res.send({ taskId: rval?.result?.insertedIds?.[0] });
@@ -89,6 +93,8 @@ async function post_Complete(req, res) {
   }
   completeTask = { $set: { status: STATUS_DONE } };
   query = { _id: new ObjectId(taskId) };
+  console.log(`Query: ${JSON.stringify(query)}
+Update: ${JSON.stringify(completeTask)}`);
   rval = await taskCollection.updateOne(query, completeTask);
   res.status(202);
   res.send({ rval });

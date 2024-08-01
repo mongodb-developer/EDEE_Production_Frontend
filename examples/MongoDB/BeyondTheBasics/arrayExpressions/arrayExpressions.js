@@ -20,12 +20,14 @@ async function get_Data(req, res) {
   arrayFilter = { $filter: { input: "$components", cond: smallCircles } };
   projection = { components: arrayFilter };
 
+  console.log(`Query: ${JSON.stringify(query)}
+Projection: ${JSON.stringify(projection)}`);
   var result = await arrayExample.find(query, projection).toArray();
   res.status(200);
   res.send(result);
 }
 
-//Generate example data
+// Generate example data
 async function post_Data(req, res) {
   if ((await arrayExample.countDocuments()) != 10) {
     docs = JSON.parse(req.body);

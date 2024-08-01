@@ -25,8 +25,8 @@ async function get_ByWeather(req, res) {
       temperature: "$latestWeather.airTemperature.value",
     },
   };
-
   var pipeline = [lookupLatestWeather, removeArray, warmestFirst, formatOutput];
+  console.log(`Pipeline: ${JSON.stringify(pipeline)}`);
   var cursor = listingsCollection.aggregate(pipeline);
   var results = await cursor.toArray();
   res.status(200);
