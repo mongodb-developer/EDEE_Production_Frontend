@@ -28,6 +28,8 @@ async function get_AtlasSearch(req, res) {
 
   // $search is used as the first stage to the $aggregate command.
   // We are using $project to remove some fields we don't want.
+  console.log(`Search Operation: ${JSON.stringify(searchOperation)}
+Projection: ${JSON.stringify(projection)}`);
   var searchResultsCursor = collection.aggregate([searchOperation, projection]);
   var searchResult = await searchResultsCursor.toArray();
   res.status(201);

@@ -1,5 +1,6 @@
 var mongoClient = null;
 var sales;
+var validatorSpec;
 
 properties = {};
 properties._id = { bsonType: "objectId" };
@@ -33,6 +34,8 @@ async function post_Data(req, res) {
     doc.date = new Date(doc.date);
   } // Explicity cast to Date type
 
+  console.log(`Doc: ${JSON.stringify(doc)}
+Validation: ${JSON.stringify(validatorSpec)}`);
   rval = await sales.insertOne(doc);
   res.status(201);
   res.send(rval);

@@ -33,7 +33,8 @@ async function get_AtlasSearch(req, res) {
 
   var projection = { $project: { 
       accommodates: 1, name: 1, description: 1, "address.market": 1 } };
-
+  console.log(`Search Operation: ${JSON.stringify(searchOperation)}
+Projection: ${JSON.stringify(projection)}`);
   var searchResultsCursor = collection.aggregate([searchOperation, projection]);
   var searchResult = await searchResultsCursor.toArray();
   res.status(201);

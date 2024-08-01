@@ -21,12 +21,12 @@ async function post_Highscores(req, res) {
       doc[field] = player[field];
     }
 
-    //Data types where needed - Dates and Integers (Int32)
+    // Data types where needed - Dates and Integers (Int32)
     doc.timestamp = new Date(doc.timestamp);
     doc.score = new Integer(doc.score);
     docs.push(doc);
   }
-
+  console.log(`Docs: ${JSON.stringify(docs)}`);
   var rval = await collection.insertMany(docs);
   res.status(201);
   res.send(rval);
@@ -40,6 +40,7 @@ async function get_Highscores(req, res) {
   } else {
     var query = {};
     //query.country = "Greece"
+    console.log(`Query: ${JSON.stringify(query)}`);
     var cursor = collection.find(query);
     var data = await cursor.toArray();
     res.status(200);

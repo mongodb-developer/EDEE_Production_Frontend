@@ -36,7 +36,7 @@ async function get_Cohorts(req, res) {
   // Rename the groupBy _id field to priceRange
   var renameId = { $set: { priceRange: "$_id", _id: "$$REMOVE" } };
   var pipeline = [bucketAutoStage, percentWithPool, renameId];
-
+  console.log(`Pipeline: ${JSON.stringify(pipeline)}`);
   var cursor = listingsCollection.aggregate(pipeline);
   var results = await cursor.toArray();
 

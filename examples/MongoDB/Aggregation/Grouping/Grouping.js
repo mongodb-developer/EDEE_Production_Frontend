@@ -24,7 +24,7 @@ async function get_Countries(req, res) {
   getTop5 = { $limit: 5 };
 
   var pipeline = [groupStage, bedsPerRoomStage, sortByBedsPerRoom, getTop5];
-
+  console.log(`Pipeline: ${JSON.stringify(pipeline)}`);
   var cursor = listingsCollection.aggregate(pipeline);
   var results = await cursor.toArray();
   res.status(200);

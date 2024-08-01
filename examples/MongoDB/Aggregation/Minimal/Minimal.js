@@ -24,7 +24,7 @@ async function get_Properties(req, res) {
   };
 
   var pipeline = [matchStage, sortStage, projectionStage];
-
+  console.log(`Pipeline: ${JSON.stringify(pipeline)}`);
   var cursor = listingsCollection.aggregate(pipeline);
   var results = await cursor.toArray();
   res.status(200);

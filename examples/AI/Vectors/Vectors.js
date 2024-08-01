@@ -24,7 +24,6 @@ async function post_VacationTypes(req, res) {
     res.send(rval);
 }
 
-
 async function get_VacationTypes(req, res) {
     var query = req.query.get("keywords")
     
@@ -43,8 +42,8 @@ async function get_VacationTypes(req, res) {
     { $project: { embedding: 0 } }]
 
     results = await vacationTypeCollection.aggregate(vectorQuery).toArray();
+    
     // Query using the vector to find records with the same concept
-
     emailText = await  aiService.promptToText("Write a marketing email suggesting why " +
         "the customer should take this type of vacation " +
         JSON.stringify(results[0]))
@@ -53,7 +52,6 @@ async function get_VacationTypes(req, res) {
     res.status(201);
     res.send({ emailText, results });
 }
-
 
 async function createVectorIndex() {
     //You can make more complex indexes including combining with boolean filtering

@@ -7,12 +7,11 @@ async function post_Prompt(req, res) {
 
   // Run a Generative AI prompt and show the response.
   // This isn't MongoDB functionality but can be used with it
-
+  console.log(`Prompt: ${JSON.stringify(post.prompt)}`);
   var response = await aiService.promptToText(post.prompt)
   res.status(200);
   res.send(response);  
 }
-
 
 async function initWebService() {
     var userName = await system.getenv("MONGO_USERNAME");

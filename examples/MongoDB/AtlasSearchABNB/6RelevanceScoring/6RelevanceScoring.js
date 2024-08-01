@@ -25,7 +25,8 @@ async function get_AtlasSearch(req, res) {
   fieldsToProject.score = { $meta: "searchScore" };
 
   var projection = {  $project: fieldsToProject };
-
+  console.log(`Search Operation: ${JSON.stringify(searchOperation)}
+Projection: ${JSON.stringify(projection)}`);
   var searchResultsCursor = collection.aggregate(
         [ searchOperation, projection ]);
   var searchResult = await searchResultsCursor.toArray();
